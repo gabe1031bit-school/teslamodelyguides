@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Y (2025+) — The Complete Feature Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171A20;
+    --paper:#F6F5F1;
+    --card:#FFFFFF;
+    --red:#E8232B;
+    --teal:#00A69C;
+    --steel:#5C5E62;
+    --line:#DEDCD4;
+    --amber:#E8A93A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ===== Print toolbar ===== */
+  .toolbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:flex-end; gap:10px;
+    background:var(--ink); padding:10px 24px;
+  }
+  .toolbar button{
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;
+    background:var(--red); color:#fff; border:none; border-radius:999px;
+    padding:9px 20px; cursor:pointer; letter-spacing:.02em;
+  }
+  .toolbar button.ghost{background:transparent; color:#fff; border:1px solid #454850;}
+
+  /* ===== Cover ===== */
+  .cover{
+    position:relative;
+    background:var(--ink);
+    color:#fff;
+    padding:90px 8vw 70px;
+    overflow:hidden;
+    border-bottom:6px solid var(--red);
+  }
+  .cover::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(232,35,43,.35), transparent 60%),
+      radial-gradient(ellipse 700px 500px at -5% 110%, rgba(0,166,156,.25), transparent 60%);
+    pointer-events:none;
+  }
+  .cover-eyebrow{
+    position:relative; z-index:1;
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em;
+    color:#B9BBC0; text-transform:uppercase; margin-bottom:28px;
+  }
+  .cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--red);}
+  .cover h1{
+    position:relative; z-index:1;
+    font-size:clamp(48px,9vw,110px);
+    font-weight:700; line-height:.92; letter-spacing:-.02em;
+  }
+  .cover h1 span{color:var(--red);}
+  .cover .sub{
+    position:relative; z-index:1;
+    max-width:640px; margin-top:24px; font-size:18px; color:#D6D7DA;
+  }
+  .cover .badges{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+  .badge{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em;
+    border:1px solid #3c3f47; color:#C8C9CD; padding:7px 13px; border-radius:999px;
+  }
+  .cover-vin{
+    position:relative; z-index:1; margin-top:56px; display:flex; gap:36px; flex-wrap:wrap;
+    border-top:1px solid #33363d; padding-top:22px;
+  }
+  .cover-vin div{font-family:'JetBrains Mono',monospace; font-size:12px; color:#9A9CA1;}
+  .cover-vin strong{display:block; color:#fff; font-size:14px; margin-top:3px; font-weight:600;}
+
+  /* ===== TOC ===== */
+  .toc-wrap{padding:56px 8vw 20px; max-width:1400px; margin:0 auto;}
+  .toc-wrap h2{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel); margin-bottom:22px;}
+  .toc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+  .toc-item{
+    display:flex; align-items:center; gap:14px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; text-decoration:none; color:var(--ink);
+  }
+  .toc-num{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px;
+    color:var(--red); width:28px; flex-shrink:0;
+  }
+  .toc-item span.t{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+  .toc-item span.d{display:block; font-size:12px; color:var(--steel); margin-top:1px;}
+
+  /* ===== Sections ===== */
+  .section{padding:64px 8vw; max-width:1400px; margin:0 auto;}
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+    border-bottom:3px solid var(--ink); padding-bottom:16px; margin-bottom:34px; flex-wrap:wrap;
+  }
+  .section-head .left{display:flex; align-items:center; gap:16px;}
+  .section-num{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px;
+    color:#fff; background:var(--ink); border-radius:8px; padding:6px 11px;
+  }
+  .section-head h2{font-size:clamp(26px,3.6vw,42px); letter-spacing:-.01em;}
+  .section-head p{font-size:14px; color:var(--steel); max-width:360px; text-align:right; margin:0;}
+  .icon{width:22px;height:22px;flex-shrink:0;}
+
+  .subhead{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px;
+    margin:38px 0 16px; color:var(--ink);
+  }
+  .subhead:first-of-type{margin-top:0;}
+  .subhead .bar{width:5px; height:20px; background:var(--red); border-radius:2px; display:inline-block;}
+
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:18px 18px 16px; break-inside:avoid; position:relative;
+  }
+  .card h4{font-size:15.5px; font-weight:600; margin-bottom:6px; padding-right:6px;}
+  .card p{font-size:13.3px; color:#3d3f45; margin:0;}
+  .tag{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px;
+    letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:6px;
+    margin-bottom:9px; font-weight:700;
+  }
+  .tag.std{background:#E4F3EF; color:var(--teal);}
+  .tag.opt{background:#FBEFDC; color:#9A6A17;}
+  .tag.fsd{background:#FCE7E8; color:var(--red);}
+  .tag.hw{background:#EDEDED; color:var(--steel);}
+
+  .callout{
+    background:#101216; color:#fff; border-radius:16px; padding:26px 28px; margin:20px 0 8px;
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .callout h4{color:#fff; font-size:15px; margin-bottom:6px;}
+  .callout p{color:#C7C8CC; font-size:13.3px; margin:0;}
+  .callout .icon{color:var(--amber);}
+
+  .voice-strip{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;
+  }
+  .voice-chip{
+    font-family:'JetBrains Mono',monospace; font-size:12px; background:#EFEEE8; border:1px solid var(--line);
+    padding:6px 12px; border-radius:999px; color:var(--ink);
+  }
+  .voice-chip::before{content:"“"; color:var(--red);}
+  .voice-chip::after{content:"”"; color:var(--red);}
+
+  .two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:24px;}
+  @media (max-width:820px){.two-col{grid-template-columns:1fr;}}
+
+  table.spec{width:100%; border-collapse:collapse; font-size:13.5px;}
+  table.spec th{
+    text-align:left; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--steel); border-bottom:2px solid var(--ink); padding:8px 10px;
+  }
+  table.spec td{padding:10px 10px; border-bottom:1px solid var(--line);}
+  table.spec tr:last-child td{border-bottom:none;}
+
+  .divider-strip{
+    height:34px; background:repeating-linear-gradient(-45deg, var(--ink), var(--ink) 10px, var(--red) 10px, var(--red) 20px);
+    opacity:.9;
+  }
+
+  .footer{
+    background:var(--ink); color:#9A9CA1; text-align:center; padding:44px 20px 60px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.9;
+  }
+  .footer strong{color:#fff;}
+  .footer a{color:var(--teal); text-decoration:none;}
+
+  .egg{
+    border:1.5px dashed var(--red); border-radius:14px; padding:18px 20px; background:#FFF7F5;
+  }
+  .egg h4{color:var(--red);}
+
+  @media print{
+    .toolbar{display:none;}
+    body{background:#fff;}
+    .cover{padding:40px 6vw 30px;}
+    .section{padding:26px 6vw; page-break-after:auto;}
+    .card{break-inside:avoid; box-shadow:none;}
+    .card-grid{grid-template-columns:repeat(2,1fr);}
+    .callout,.egg{break-inside:avoid;}
+    a{color:inherit; text-decoration:none;}
+    .divider-strip{height:14px;}
+  }
+  @media (max-width:640px){
+    .card-grid{grid-template-columns:1fr;}
+    .section-head p{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="ghost" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+  <div class="cover-eyebrow"><span class="dot"></span> OWNER'S FEATURE GUIDE · SOFTWARE 2026.26 · NORTH AMERICA</div>
+  <h1>MODEL <span>Y</span><br>2025+</h1>
+  <p class="sub">Every feature in your Tesla, translated from the official Owner's Manual into one fun, fridge-worthy, printable cheat sheet — from frunk to Full Self-Driving.</p>
+  <div class="badges">
+    <span class="badge">5 / 6 / 7-SEAT LAYOUTS</span>
+    <span class="badge">STANDARD RANGE + LONG RANGE + PERFORMANCE</span>
+    <span class="badge">OTA SOFTWARE UPDATES</span>
+    <span class="badge">FULL SELF-DRIVING (SUPERVISED)</span>
+  </div>
+  <div class="cover-vin">
+    <div>COMPILED FROM<strong>tesla.com/ownersmanual/modely</strong></div>
+    <div>BUILT FOR<strong>Owners, co-pilots &amp; curious backseat drivers</strong></div>
+    <div>PAGES<strong>Front bumper → rear diffuser</strong></div>
+  </div>
+</header>
+
+<!-- ===================== TOC ===================== -->
+<div class="toc-wrap">
+  <h2>Where everything is</h2>
+  <div class="toc-grid">
+    <a class="toc-item" href="#overview"><span class="toc-num">01</span><span><span class="t">Overview &amp; Cockpit</span><span class="d">Exterior, interior, touchscreen, sounds</span></span></a>
+    <a class="toc-item" href="#opening"><span class="toc-num">02</span><span><span class="t">Keys, Doors &amp; Windows</span><span class="d">Getting in, out, and locked down</span></span></a>
+    <a class="toc-item" href="#storage"><span class="toc-num">03</span><span><span class="t">Storage</span><span class="d">Frunk, trunk &amp; cabin cubbies</span></span></a>
+    <a class="toc-item" href="#seating"><span class="toc-num">04</span><span><span class="t">Seating &amp; Safety Restraints</span><span class="d">Seats, belts, airbags, kids</span></span></a>
+    <a class="toc-item" href="#connectivity"><span class="toc-num">05</span><span><span class="t">Connectivity</span><span class="d">App, Wi-Fi, Bluetooth, garage</span></span></a>
+    <a class="toc-item" href="#driving"><span class="toc-num">06</span><span><span class="t">Driving Controls</span><span class="d">Shifting, modes, suspension, towing</span></span></a>
+    <a class="toc-item" href="#fsd"><span class="toc-num">07</span><span><span class="t">Full Self-Driving (Supervised)</span><span class="d">What it does &amp; its limits</span></span></a>
+    <a class="toc-item" href="#autopilot"><span class="toc-num">08</span><span><span class="t">Other Self-Driving Features</span><span class="d">Autosteer, Autopark, Summon</span></span></a>
+    <a class="toc-item" href="#safety"><span class="toc-num">09</span><span><span class="t">Active Safety Features</span><span class="d">Collision &amp; lane protection</span></span></a>
+    <a class="toc-item" href="#security"><span class="toc-num">10</span><span><span class="t">Dashcam, Sentry &amp; Security</span><span class="d">Watching the car while you're gone</span></span></a>
+    <a class="toc-item" href="#climate"><span class="toc-num">11</span><span><span class="t">Climate</span><span class="d">Heating, cooling, weather prep</span></span></a>
+    <a class="toc-item" href="#nav"><span class="toc-num">12</span><span><span class="t">Navigation &amp; Entertainment</span><span class="d">Maps, media, games, theater</span></span></a>
+    <a class="toc-item" href="#charging"><span class="toc-num">13</span><span><span class="t">Charging &amp; Energy</span><span class="d">Plugging in &amp; battery health</span></span></a>
+    <a class="toc-item" href="#maintenance"><span class="toc-num">14</span><span><span class="t">Maintenance</span><span class="d">Updates, tires, cleaning, DIY</span></span></a>
+    <a class="toc-item" href="#specs"><span class="toc-num">15</span><span><span class="t">Specifications</span><span class="d">Labels, loading, dimensions</span></span></a>
+    <a class="toc-item" href="#emergency"><span class="toc-num">16</span><span><span class="t">In Case of Emergency</span><span class="d">No power, no charge, no panic</span></span></a>
+  </div>
+</div>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 01 OVERVIEW ===================== -->
+<section class="section" id="overview">
+  <div class="section-head">
+    <div class="left"><span class="section-num">01</span><h2>Overview &amp; Cockpit</h2></div>
+    <p>The quick tour: what's on the outside, what's on the inside, and how the screen runs the whole show.</p>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Exterior at a glance</div>
+  <div class="card-grid">
+    <div class="card"><h4>Wheels &amp; tires</h4><p>Aero-optimized wheel designs balance range and grip; tire specs and pressures live on the driver's-door B-pillar label.</p></div>
+    <div class="card"><h4>Power-folding mirrors</h4><p>Fold automatically when you exit and lock, or fold/unfold on command — including by voice.</p></div>
+    <div class="card"><h4>Flush door handles</h4><p>Present themselves as you approach with a key, phone key, or key card, then sit flush for aerodynamics.</p></div>
+    <div class="card"><h4>Key card sensor</h4><p>Tap-to-unlock sensor sits at the base of the B-pillar on the driver's side.</p></div>
+    <div class="card"><h4>Charge port</h4><p>Rear driver's-side taillight houses the port; light rings and pulses to show charge status.</p></div>
+    <div class="card"><span class="tag opt">IF EQUIPPED</span><h4>Front light bar</h4><p>A signature LED strip spans the nose above the headlights on refreshed Model Y trims.</p></div>
+    <div class="card"><h4>Front &amp; rear cameras</h4><p>Self-Driving cameras are built into the fascia, fenders, doors pillars, and windshield — see Cameras below.</p></div>
+    <div class="card"><h4>Frunk &amp; rear trunk</h4><p>Powered, weatherproof storage front and rear — full breakdown in Section 03.</p></div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Inside the cabin</div>
+  <div class="card-grid">
+    <div class="card"><h4>Turn stalk &amp; scroll wheels</h4><p>A single left-side stalk handles turn signals; two steering-wheel scroll wheels drive menus, mirrors, wipers, and more.</p></div>
+    <div class="card"><h4>Center touchscreen</h4><p>Runs climate, media, navigation, and nearly every setting in the car — full breakdown just below.</p></div>
+    <div class="card"><span class="tag opt">IF EQUIPPED</span><h4>Rear touchscreen</h4><p>Gives back-seat passengers their own climate, media, video, and gaming controls.</p></div>
+    <div class="card"><h4>Wireless phone chargers</h4><p>Two Qi charge pads up front, up to 15W each — details in Section 05.</p></div>
+    <div class="card"><h4>Ambient &amp; accent lighting</h4><p>Dome lights, hazard flashers, and accent lighting (if equipped) are grouped overhead for easy reach.</p></div>
+    <div class="card"><h4>Cabin camera</h4><p>Mounted above the rearview mirror; monitors driver attentiveness during Self-Driving and supports Sentry Mode.</p></div>
+    <div class="card"><h4>Manual door releases</h4><p>Mechanical backups sit beside every power door-open button, front and rear, in case of power loss.</p></div>
+    <div class="card"><h4>Center console &amp; glovebox</h4><p>Deep bin storage plus a hidden, touchscreen-only glovebox — see Section 03.</p></div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>The touchscreen, decoded</div>
+  <div class="two-col">
+    <div>
+      <div class="card-grid">
+        <div class="card"><h4>Status bar</h4><p>Weather, temperature, air quality, connectivity, Sentry, and driver-profile icons live along the top edge.</p></div>
+        <div class="card"><h4>Car status area</h4><p>A live view of your car and surroundings — drag it wider for more road detail, pinch to zoom, or use it to pop the trunks and charge port door.</p></div>
+        <div class="card"><h4>Drive-mode strip</h4><p>Swipe in from the passenger edge to reveal Park / Reverse / Neutral / Drive.</p></div>
+        <div class="card"><h4>My Apps</h4><p>Touch-and-hold any app to customize a one-touch shortcut bar along the bottom edge.</p></div>
+        <div class="card"><h4>Split climate</h4><p>Tap "Split" on the temperature popup to give driver and passenger independent zones.</p></div>
+        <div class="card"><h4>Screen Clean Mode</h4><p>Darkens and locks the display so you can wipe it down without triggering inputs.</p></div>
+        <div class="card"><h4>Restart the touchscreen</h4><p>In Park, hold both steering-wheel scroll buttons until the screen blacks out and the logo reappears (~30 seconds).</p></div>
+        <div class="card"><h4>Full personalization</h4><p>Dark/Light/Auto appearance, Reduce Blue Light, brightness, text size, units, and keyboard/voice languages all live under Controls &gt; Display.</p></div>
+      </div>
+    </div>
+    <div class="callout">
+      <div>
+        <h4>💡 Rename your car</h4>
+        <p>Controls &gt; Software &gt; Name Your Vehicle. Whatever you pick shows up in the Tesla app too — choose wisely, it's the first thing every valet sees.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Voice commands</div>
+  <p style="font-size:13.5px;color:var(--steel);max-width:640px;margin:0 0 10px;">Press and hold the steering-wheel microphone button, wait for the chime, and just talk. A sample of what it understands:</p>
+  <div class="voice-strip">
+    <span class="voice-chip">Make it cooler</span>
+    <span class="voice-chip">Turn on Sentry Mode</span>
+    <span class="voice-chip">Open the glovebox</span>
+    <span class="voice-chip">Navigate home</span>
+    <span class="voice-chip">I'm feeling hungry</span>
+    <span class="voice-chip">Fold the mirrors</span>
+    <span class="voice-chip">Show nearby Superchargers</span>
+    <span class="voice-chip">Turn on Pet Mode</span>
+    <span class="voice-chip">Speed up the wipers</span>
+    <span class="voice-chip">Show me the Owner's Manual</span>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Cameras &amp; normal sounds</div>
+  <div class="card-grid">
+    <div class="card"><h4>Full camera suite</h4><p>Front bumper, rear license plate, both door pillars, both fenders, plus twin windshield cameras — 360° coverage for Self-Driving and parking.</p></div>
+    <div class="card"><h4>Automatic Blind Spot Camera</h4><p>Engage a turn signal and the matching side camera pops onto the screen, with a red bar if a vehicle is hiding in your blind spot.</p></div>
+    <div class="card"><h4>Camera calibration drive</h4><p>New or serviced cameras self-calibrate over about 20–25 miles of clear, well-marked multi-lane road before Self-Driving features unlock.</p></div>
+    <div class="card"><h4>Keep the lenses clean</h4><p>Rain, dirt, and winter condensation can all mute a camera — the front camera even has its own washer nozzle.</p></div>
+    <div class="card"><h4>Normal operating sounds</h4><p>Coolant pumps, contactor clicks, and HVAC compressor whirs are all normal EV noises, even parked and "off."</p></div>
+    <div class="card"><h4>Car Status readouts</h4><p>Tire pressure, 12V battery health, and door/trunk states surface as shortcut cards right on the home screen.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 02 OPENING & CLOSING ===================== -->
+<section class="section" id="opening">
+  <div class="section-head">
+    <div class="left"><span class="section-num">02</span><h2>Keys, Doors &amp; Windows</h2></div>
+    <p>Four ways in, one tap to lock, and a windshield that knows when it's raining.</p>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Keys</div>
+  <div class="card-grid">
+    <div class="card"><h4>Phone Key</h4><p>Your paired smartphone unlocks and starts the car automatically via Bluetooth — the default way most owners drive daily.</p></div>
+    <div class="card"><h4>Key Card</h4><p>Tap the RFID card against the driver-side B-pillar to unlock, and against the console reader to power on and drive.</p></div>
+    <div class="card"><span class="tag opt">OPTIONAL</span><h4>Key Fob</h4><p>A traditional physical remote for anyone who wants a classic backup key on their keyring.</p></div>
+    <div class="card"><h4>Managing keys</h4><p>Add, rename, or remove Phone Keys and cards from Controls &gt; Locks, and share temporary access with other drivers via the app.</p></div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Doors</div>
+  <div class="card-grid">
+    <div class="card"><h4>Auto-present handles</h4><p>Front handles extend as you approach with a recognized key; rear doors open with an interior button or exterior handle pull.</p></div>
+    <div class="card"><h4>Walk-away lock/unlock</h4><p>Configurable so the car locks itself the moment your phone key walks away, and unlocks as you return.</p></div>
+    <div class="card"><h4>Child locks</h4><p>Enable from the touchscreen or rear door panel to disable interior rear door handles and window switches — great for curious toddlers.</p></div>
+    <div class="card"><h4>Power liftgate</h4><p>Set a custom open height so the rear trunk never clips a low garage ceiling again.</p></div>
+    <div class="card"><h4>Valet Mode</h4><p>Locks the frunk, glovebox, and trunk, caps speed and power, and hides your saved locations and Sentry footage.</p></div>
+    <div class="card"><h4>Manual releases</h4><p>Mechanical backups are tucked beside every door and the frunk for total power-loss situations — see Section 16.</p></div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Windows</div>
+  <div class="card-grid">
+    <div class="card"><h4>One-touch up/down</h4><p>Tap once for a full auto up or down on any window; front windows include anti-pinch sensing.</p></div>
+    <div class="card"><h4>Vent &amp; express-close</h4><p>Long-press to crack all windows for airflow, or close every window (and the sunroof) at once from the touchscreen or app.</p></div>
+    <div class="card"><h4>Panoramic glass roof</h4><p>UV- and infrared-coated fixed glass roof floods the cabin with light while blocking heat.</p></div>
+    <div class="card"><h4>Auto wiper &amp; defrost sync</h4><p>Rain-sensing wipers and windshield defrost can be triggered together right from a voice command.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 03 STORAGE ===================== -->
+<section class="section" id="storage">
+  <div class="section-head">
+    <div class="left"><span class="section-num">03</span><h2>Storage</h2></div>
+    <p>No engine up front means a second trunk — plus more cubbies than most owners ever find.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Front trunk (frunk)</h4><p>A fully weatherproof, drain-equipped trunk under the hood — open it from the touchscreen, app, or exterior release.</p></div>
+    <div class="card"><h4>Rear trunk</h4><p>Power liftgate with under-floor storage and a flat-folding second (and third) row for cargo runs.</p></div>
+    <div class="card"><h4>Center console</h4><p>A deep two-tier bin up front holds the wireless chargers, USB ports, and a covered storage well big enough for a bag.</p></div>
+    <div class="card"><h4>Touch-to-open glovebox</h4><p>No latch — it only opens from the touchscreen (Controls or voice command), which doubles as light theft deterrence.</p></div>
+    <div class="card"><span class="tag opt">IF EQUIPPED</span><h4>Rear console</h4><p>Second-row riders get their own cupholders, storage, and USB-C charging built into a fold-down console.</p></div>
+    <div class="card"><h4>Door pockets &amp; seatback pockets</h4><p>Every door holds bottles and odds and ends; front seatbacks add pockets for rear passengers.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 04 SEATING & SAFETY ===================== -->
+<section class="section" id="seating">
+  <div class="section-head">
+    <div class="left"><span class="section-num">04</span><h2>Seating &amp; Safety Restraints</h2></div>
+    <p>Five, six, or seven seats — plus the belts, anchors, and airbags built around every one of them.</p>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Seating layouts</div>
+  <div class="card-grid">
+    <div class="card"><span class="tag std">5-SEAT</span><h4>Standard layout</h4><p>Power-adjustable heated front seats and a 60/40-split, reclining, power-folding second row.</p></div>
+    <div class="card"><span class="tag opt">OPTIONAL</span><h4>6-seat layout</h4><p>Second-row captain's chairs plus a compact third row — ideal for families who need an aisle to the back.</p></div>
+    <div class="card"><span class="tag opt">OPTIONAL</span><h4>7-seat layout</h4><p>Adds a rear-facing-friendly third-row bench for occasional extra passengers.</p></div>
+    <div class="card"><h4>Ventilated &amp; heated seats</h4><p>Front seat heating and ventilation, plus available heated outboard rear seats, are all controllable by touch or voice.</p></div>
+    <div class="card"><h4>Memory positions</h4><p>Driver Profiles save seat, mirror, and steering position per person — see Section 06.</p></div>
+    <div class="card"><h4>Easy Entry</h4><p>Automatically slides the front seat back when you exit and forward again when you return, for easier rear-seat access.</p></div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Restraints &amp; child safety</div>
+  <div class="card-grid">
+    <div class="card"><h4>Seat belt reminders</h4><p>Chimes and a touchscreen popup fire for any unfastened, occupied seat — front or rear.</p></div>
+    <div class="card"><h4>LATCH anchors</h4><p>Lower anchors and top tethers are built into all outboard rear seats for car-seat installation.</p></div>
+    <div class="card"><h4>Child safety seats</h4><p>Compatible with rear-facing, forward-facing, and booster seats across the 5-, 6-, and 7-seat layouts.</p></div>
+    <div class="card"><h4>Passenger airbag status</h4><p>A dedicated status icon and light show whenever the front passenger airbag is manually disabled.</p></div>
+    <div class="card"><h4>Full airbag suite</h4><p>Front, side, and side-curtain airbags are standard across every row that has one.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 05 CONNECTIVITY ===================== -->
+<section class="section" id="connectivity">
+  <div class="section-head">
+    <div class="left"><span class="section-num">05</span><h2>Connectivity</h2></div>
+    <p>Your phone is the key, the app is the remote, and the garage door already knows you're coming.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Tesla mobile app</h4><p>Lock/unlock, precondition the cabin, check charge status, summon the car, and share keys — all from your phone, anywhere.</p></div>
+    <div class="card"><h4>Wi-Fi</h4><p>Connects automatically to saved networks (like home) to download software updates and maps over Wi-Fi instead of cellular.</p></div>
+    <div class="card"><h4>Bluetooth</h4><p>Pairs phones for calls and audio, and headphones for the rear screen — up to two sets at once.</p></div>
+    <div class="card"><h4>Phone &amp; calendar</h4><p>Synced contacts and calendar events surface hands-free, plus in-car web conferencing for calls on the go (parked).</p></div>
+    <div class="card"><span class="tag opt">PREMIUM CONNECTIVITY</span><h4>Live traffic &amp; streaming</h4><p>Satellite-view maps, live traffic visualization, video/music streaming, and in-car internet browsing.</p></div>
+    <div class="card"><h4>Smart Garage (HomeLink)</h4><p>Learns your garage door automatically using GPS, so it opens and closes as you approach or leave — no separate remote needed.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 06 DRIVING ===================== -->
+<section class="section" id="driving">
+  <div class="section-head">
+    <div class="left"><span class="section-num">06</span><h2>Driving Controls</h2></div>
+    <p>From "shift into Drive" to towing a trailer — the fundamentals of actually moving the car.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card"><h4>Starting &amp; powering off</h4><p>No start button — get in with a recognized key, press the brake, and go. Power cycle from Controls &gt; Service if the car ever needs a reboot.</p></div>
+    <div class="card"><h4>Steering wheel scroll buttons</h4><p>Left wheel adjusts mirrors, steering feel, and more; right wheel controls volume and media by default — both are customizable.</p></div>
+    <div class="card"><h4>Auto-dimming, power-fold mirrors</h4><p>Glare-reducing auto-dimming glass, with fold/unfold by button, touchscreen, or voice.</p></div>
+    <div class="card"><h4>Shifting</h4><p>Swipe the on-screen drive strip or use the overhead-console P/R/N/D selector (if equipped) — Park is also one tap away.</p></div>
+    <div class="card"><h4>Adaptive &amp; auto headlights</h4><p>Auto high-beams dim for oncoming traffic; the light bar and signature DRLs are part of the exterior lighting suite.</p></div>
+    <div class="card"><h4>Rain-sensing wipers</h4><p>Automatically adjust speed to rainfall, with manual and voice override at any time.</p></div>
+    <div class="card"><h4>Regenerative braking</h4><p>Lifting off the accelerator recaptures energy back into the battery, reducing brake wear and stretching range.</p></div>
+    <div class="card"><h4>Park Assist</h4><p>Ultrasonic-camera parking sensors chime and visualize nearby objects on the touchscreen at low speeds.</p></div>
+    <div class="card"><h4>Vehicle Hold</h4><p>Keeps the car stopped on a hill or in traffic without your foot on the brake.</p></div>
+    <div class="card"><h4>Traction &amp; Stability Control</h4><p>Manages wheel slip automatically in rain, snow, or loose surfaces; Slip Start assists on sand, mud, or snow when needed.</p></div>
+    <div class="card"><h4>Acceleration modes</h4><p>Choose Chill or Standard response depending on how eager you want the accelerator pedal to feel.</p></div>
+    <div class="card"><h4>Adaptive suspension</h4><p>Tuned ride and handling, with the car automatically adjusting to load and driving conditions.</p></div>
+    <div class="card"><h4>Driver Profiles</h4><p>Save seat, mirror, steering, and climate preferences per driver, and switch instantly from the touchscreen.</p></div>
+    <div class="card"><h4>Trip &amp; energy info</h4><p>Live and historical efficiency, trip distance, and driving stats are tracked automatically — no odometer math required.</p></div>
+    <div class="card"><h4>Rear-facing camera(s)</h4><p>Automatic backup display with dynamic guidelines whenever you shift into Reverse.</p></div>
+    <div class="card"><h4>Pedestrian Warning System</h4><p>Emits an audible alert at low speed to warn pedestrians and cyclists the car is moving — required by law in many regions.</p></div>
+    <div class="card"><h4>Towing &amp; accessories</h4><p>Available tow hitch supports a rated trailer load; the touchscreen shows a dedicated towing checklist and trailer light-check tool.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 07 FSD ===================== -->
+<section class="section" id="fsd">
+  <div class="section-head">
+    <div class="left"><span class="section-num">07</span><h2>Full Self-Driving (Supervised)</h2></div>
+    <p><span class="tag fsd" style="margin:0;">REQUIRES FSD PURCHASE OR SUBSCRIPTION</span></p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>What it does</h4><p>Steers, accelerates, and brakes for city streets and highways alike — following your navigation route, handling turns, lane changes, and traffic controls.</p></div>
+    <div class="card"><h4>Supervised, not driverless</h4><p>You must keep your hands ready and eyes on the road at all times; the cabin camera watches for attentiveness.</p></div>
+    <div class="card"><h4>Engaging FSD</h4><p>Pull the drive-mode selector down twice (or use the on-screen icon) once the blue steering-wheel icon is available.</p></div>
+    <div class="card"><h4>Known limitations</h4><p>Can be confused by construction zones, emergency vehicles, unusual road markings, extreme weather, and complex unprotected turns — always be ready to take over.</p></div>
+    <div class="card"><h4>Continuous improvement</h4><p>Capability updates arrive over-the-air; always read the release notes, since behavior can change between versions.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 08 OTHER SELF-DRIVING ===================== -->
+<section class="section" id="autopilot">
+  <div class="section-head">
+    <div class="left"><span class="section-num">08</span><h2>Other Self-Driving Features</h2></div>
+    <p>The building blocks — standard on every Model Y, FSD or not.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><span class="tag std">STANDARD</span><h4>Traffic-Aware Cruise Control</h4><p>Matches your set speed to traffic ahead, slowing and re-accelerating automatically in a single lane.</p></div>
+    <div class="card"><span class="tag std">STANDARD</span><h4>Autosteer</h4><p>Keeps the car centered in clearly marked lanes on suitable roads while you stay attentive and ready to steer.</p></div>
+    <div class="card"><h4>Traffic Light &amp; Stop Sign Control</h4><p>Detects and responds to lights and stop signs along your route, slowing the car and asking you to confirm proceeding.</p></div>
+    <div class="card"><h4>Autopark</h4><p>Finds and executes parallel or perpendicular parking maneuvers into a detected space with one tap.</p></div>
+    <div class="card"><h4>Summon &amp; Smart Summon</h4><p>Drives the car forward/backward out of a tight space, or navigates a parking lot to meet you, via the app.</p></div>
+    <div class="card"><h4>Know the limits</h4><p>All Self-Driving features require an attentive driver ready to take control at any moment — they're driver assistance, not a replacement for you.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 09 ACTIVE SAFETY ===================== -->
+<section class="section" id="safety">
+  <div class="section-head">
+    <div class="left"><span class="section-num">09</span><h2>Active Safety Features</h2></div>
+    <p>Silent guardians that watch every drive, whether Autopilot is on or not.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Lane Departure Avoidance</h4><p>Gently nudges steering, or brakes one side, if you drift toward a lane line without signaling.</p></div>
+    <div class="card"><h4>Blind Spot Collision Warning</h4><p>Visual and audible alerts (plus the Automatic Blind Spot Camera) flag vehicles hiding beside you.</p></div>
+    <div class="card"><h4>Automatic Emergency Braking</h4><p>Applies the brakes if a forward collision looks imminent and you haven't reacted in time.</p></div>
+    <div class="card"><h4>Forward &amp; Rear Collision Warning</h4><p>Audible and visual alerts when you're closing in on an object faster than is safe.</p></div>
+    <div class="card"><h4>Speed Assist</h4><p>Displays posted speed limits on the touchscreen and can warn or gently limit speed based on your settings.</p></div>
+    <div class="card"><h4>Cabin Camera</h4><p>Doubles as the driver-attentiveness monitor for Self-Driving and a Sentry Mode viewpoint inside the car.</p></div>
+    <div class="card"><span class="tag hw">HARDWARE-DEPENDENT</span><h4>Cabin Radar</h4><p>Detects occupant presence and motion inside the cabin — supports safety features like child/pet detection alerts.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 10 SENTRY/SECURITY ===================== -->
+<section class="section" id="security">
+  <div class="section-head">
+    <div class="left"><span class="section-num">10</span><h2>Dashcam, Sentry &amp; Security</h2></div>
+    <p>Your parked car is quietly recording everything around it — here's how to use that footage.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Sentry Mode</h4><p>Arms automatically (or on demand) when parked, monitoring surroundings and recording if it detects a threat — with an on-screen warning to intruders.</p></div>
+    <div class="card"><h4>Dashcam</h4><p>Continuously records from all exterior cameras while driving; save a clip instantly with the dashcam icon or steering-wheel horn tap.</p></div>
+    <div class="card"><h4>USB drive requirements</h4><p>Needs a USB drive formatted FAT32 or exFAT, with a dedicated "TeslaCam" folder, plugged into the glovebox port.</p></div>
+    <div class="card"><h4>Safety &amp; Security settings</h4><p>PIN to Drive, Speed Limit Mode, Valet Mode, and Allow Mobile Access all live under Controls &gt; Safety.</p></div>
+    <div class="card"><h4>PIN to Drive</h4><p>Requires a PIN before the car can be driven — an extra layer if you lend the car or valet it.</p></div>
+    <div class="card"><h4>Joe Mode</h4><p>Mutes non-critical chimes system-wide, for sleeping passengers or a quieter cabin overall.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 11 CLIMATE ===================== -->
+<section class="section" id="climate">
+  <div class="section-head">
+    <div class="left"><span class="section-num">11</span><h2>Climate</h2></div>
+    <p>Heat pump efficiency with old-fashioned "just make it comfortable" simplicity.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Touch-and-drag temperature</h4><p>Arrows or a slider on the touchscreen set cabin temp instantly; "Split" gives driver and passenger independent zones.</p></div>
+    <div class="card"><h4>Directional air vents</h4><p>Invisible vents blow air by direction, not physical louvers — drag an on-screen airflow arrow to aim it anywhere in the cabin.</p></div>
+    <div class="card"><h4>Heated everything</h4><p>Heated front and outboard rear seats, heated steering wheel, and a heated wiper park area for icy mornings.</p></div>
+    <div class="card"><h4>Bioweapon Defense-grade filtration</h4><p>HEPA-level cabin air filtration (where equipped) scrubs pollutants, allergens, and smoke from incoming air.</p></div>
+    <div class="card"><h4>Keep Climate On / Dog Mode / Camp Mode</h4><p>Keeps the cabin conditioned with the car "off" — Dog Mode shows cabin temp on the exterior screen for passersby.</p></div>
+    <div class="card"><h4>Scheduled preconditioning</h4><p>Warms or cools the cabin (and battery) before a scheduled departure time, straight from the wall — see Section 13.</p></div>
+    <div class="card"><h4>Cold-weather best practices</h4><p>Precondition while plugged in, keep the charge port ice-free, and expect temporarily reduced regen until the battery warms.</p></div>
+    <div class="card"><h4>Hot-weather best practices</h4><p>Cabin Overheat Protection can vent hot air or run A/C while parked to keep the interior — and pets — safe.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 12 NAV & ENTERTAINMENT ===================== -->
+<section class="section" id="nav">
+  <div class="section-head">
+    <div class="left"><span class="section-num">12</span><h2>Navigation &amp; Entertainment</h2></div>
+    <p>Turn-by-turn to the Supercharger, then a movie while you wait for it to charge.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Built-in navigation</h4><p>Live routing automatically plans Supercharger stops on long trips and estimates arrival battery %.</p></div>
+    <div class="card"><h4>Voice-first search</h4><p>"Navigate to...", "Show nearby Superchargers," or the playful "I'm feeling hungry/lucky" shortcuts all work hands-free.</p></div>
+    <div class="card"><h4>Media player</h4><p>Streaming apps, live radio (including internet and satellite where equipped), Bluetooth audio, and USB playback in one app.</p></div>
+    <div class="card"><h4>Immersive sound</h4><p>A premium multi-speaker audio system with adjustable EQ, sourced right from the touchscreen.</p></div>
+    <div class="card"><h4>Theater</h4><p>Streaming video apps for use while parked and charging — perfect for a Supercharger stop.</p></div>
+    <div class="card"><span class="tag egg">TOYBOX</span><h4>Arcade &amp; Toybox</h4><p>Built-in games playable with the steering wheel and scroll buttons as a controller, plus whimsical extras Tesla calls "Easter eggs."</p></div>
+    <div class="card"><h4>Rear-seat entertainment</h4><p>The rear touchscreen (if equipped) mirrors video, games, and climate control for back-seat passengers.</p></div>
+  </div>
+
+  <div class="egg" style="margin-top:18px;">
+    <h4>🥚 Hidden in the Toybox</h4>
+    <p>Tesla regularly tucks whimsical animations and games into the Toybox app — think light shows, silly sound effects, and holiday surprises. Half the fun is finding them yourself, so we won't spoil where they all are.</p>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 13 CHARGING ===================== -->
+<section class="section" id="charging">
+  <div class="section-head">
+    <div class="left"><span class="section-num">13</span><h2>Charging &amp; Energy</h2></div>
+    <p>Skip the gas station forever — here's how the battery actually gets fed.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Home charging</h4><p>A Level 2 Wall Connector (or a standard outlet with the Mobile Connector) refills overnight for daily driving needs.</p></div>
+    <div class="card"><h4>Supercharging</h4><p>Tesla's DC fast-charging network adds significant range in minutes; navigation preconditions the battery automatically on the way.</p></div>
+    <div class="card"><h4>Charging instructions</h4><p>Open the port with the app, touchscreen, key card, or a tap on the charging-door button, then plug in — charging starts automatically.</p></div>
+    <div class="card"><h4>Scheduled precondition &amp; charge</h4><p>Set a departure time so the cabin is comfortable and the battery is warm and topped off exactly when you need it.</p></div>
+    <div class="card"><h4>Charge limit slider</h4><p>Set a daily percentage (commonly under 100%) for battery longevity, with a higher limit reserved for trips.</p></div>
+    <div class="card"><h4>Getting maximum range</h4><p>Smooth acceleration, moderate speeds, tire pressure, and climate settings are the biggest levers on real-world range.</p></div>
+    <div class="card"><h4>High-voltage battery health</h4><p>Battery degradation is tracked over time; the manual recommends keeping the car plugged in rather than sitting empty for long periods.</p></div>
+    <div class="card"><h4>Powering devices from the charge port</h4><p>Certain accessories can draw power directly through the charge port for camping or backup-power scenarios.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 14 MAINTENANCE ===================== -->
+<section class="section" id="maintenance">
+  <div class="section-head">
+    <div class="left"><span class="section-num">14</span><h2>Maintenance</h2></div>
+    <p>No oil changes — but a handful of things are still worth a look.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Over-the-air software updates</h4><p>New features and fixes install automatically over Wi-Fi — schedule installs for overnight so you never lose driving time.</p></div>
+    <div class="card"><h4>Maintenance service intervals</h4><p>Tesla recommends periodic cabin air filter replacement, brake fluid checks, and tire rotations — see Controls &gt; Service for your car's specific schedule.</p></div>
+    <div class="card"><h4>Tire care</h4><p>Check pressure monthly (cold), rotate per the recommended interval, and watch for uneven wear from alignment issues.</p></div>
+    <div class="card"><h4>Cleaning</h4><p>Camera lenses, sensors, and the glass roof need gentle, specific care — avoid automatic car washes with strong brushes on cameras.</p></div>
+    <div class="card"><h4>Wiper blades, jets &amp; fluid</h4><p>Replace blades roughly once a year; use only washer fluid rated for the climate to protect the camera-adjacent nozzles.</p></div>
+    <div class="card"><h4>Jacking &amp; lifting</h4><p>Specific jack-pad points are marked on the underbody — using the wrong point can damage the battery pack.</p></div>
+    <div class="card"><h4>Temporary tire repair kit</h4><p>A sealant-and-compressor kit (where equipped) handles small punctures to get you to a tire shop.</p></div>
+    <div class="card"><h4>Parts &amp; accessories</h4><p>Genuine Tesla accessories are designed and tested specifically not to interfere with sensors, cameras, or charging.</p></div>
+    <div class="card"><h4>Do-it-yourself maintenance</h4><p>Owner-serviceable items are limited by design — wipers, 12V battery, and cabin filters are about the extent of it.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 15 SPECS ===================== -->
+<section class="section" id="specs">
+  <div class="section-head">
+    <div class="left"><span class="section-num">15</span><h2>Specifications</h2></div>
+    <p>Where to find the numbers that are actually specific to your car.</p>
+  </div>
+  <table class="spec">
+    <tr><th>Where to look</th><th>What you'll find</th></tr>
+    <tr><td>Driver's-door B-pillar label</td><td>Tire size &amp; cold pressure, VIN, GVWR, and manufacture date</td></tr>
+    <tr><td>Controls &gt; Software &gt; Additional Vehicle Information</td><td>VIN, software version, regulatory identifiers</td></tr>
+    <tr><td>Controls &gt; Service</td><td>Camera calibration status, upcoming maintenance, diagnostics</td></tr>
+    <tr><td>Trunk &amp; frunk load labels</td><td>Maximum cargo and roof load ratings for your specific configuration</td></tr>
+    <tr><td>tesla.com/modely (Design Studio)</td><td>Official current dimensions, weight, and range figures by trim and wheel choice</td></tr>
+  </table>
+  <div class="card-grid" style="margin-top:16px;">
+    <div class="card"><h4>Vehicle loading</h4><p>Total occupant + cargo weight is capped by the GVWR on your door label — exceeding it affects handling and braking.</p></div>
+    <div class="card"><h4>Subsystems overview</h4><p>The manual maps out the high-voltage system, low-voltage (12V) system, and drive unit(s) at a conceptual level for technicians and curious owners alike.</p></div>
+    <div class="card"><h4>Wheel &amp; tire fitment</h4><p>Stick to Tesla-approved sizes and load ratings — wider aftermarket wheels can affect range and sensor accuracy.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 16 EMERGENCY ===================== -->
+<section class="section" id="emergency">
+  <div class="section-head">
+    <div class="left"><span class="section-num">16</span><h2>In Case of Emergency</h2></div>
+    <p>The stuff you hope to never need — but will be glad you read once.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Tesla Roadside Assistance</h4><p>Reachable straight from the mobile app or Controls &gt; Service &gt; Contact Roadside Assistance, 24/7.</p></div>
+    <div class="card"><h4>Running low on range</h4><p>Navigation reroutes to the nearest charger automatically and shows a live range-remaining estimate as the buffer shrinks.</p></div>
+    <div class="card"><h4>Opening the frunk with no power</h4><p>A manual mechanical release is accessible behind the front fascia for total power-loss situations.</p></div>
+    <div class="card"><h4>Jump starting</h4><p>A 12V jump point under the frunk can revive a depleted low-voltage battery — the high-voltage pack itself is never jumped.</p></div>
+    <div class="card"><h4>Opening doors with no power</h4><p>Every door — front and rear — has a mechanical backup release; rear ones are typically tucked in the door pocket or lower panel.</p></div>
+    <div class="card"><h4>Submerged-vehicle guidance</h4><p>If the car enters water, prioritize an immediate manual exit through doors or windows rather than waiting on power-assisted mechanisms.</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div><strong>MODEL Y — 2025+ FEATURE GUIDE</strong></div>
+  <div>Compiled from the official Tesla Owner's Manual at <a href="https://www.tesla.com/ownersmanual/modely/en_us/">tesla.com/ownersmanual/modely</a></div>
+  <div>Feature availability varies by trim, region, order date, and software version — always confirm specifics for your VIN in the Owner's Manual on your touchscreen.</div>
+  <div>Not an official Tesla document · Made for glovebox duty 🧡</div>
+</footer>
+
+</body>
+</html>

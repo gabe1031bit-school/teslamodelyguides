@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Y — Charging, Costs &amp; Owner Tips</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171A20;
+    --paper:#F6F5F1;
+    --card:#FFFFFF;
+    --red:#E8232B;
+    --teal:#00A69C;
+    --steel:#5C5E62;
+    --line:#DEDCD4;
+    --amber:#E8A93A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .toolbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:flex-end; gap:10px;
+    background:var(--ink); padding:10px 24px;
+  }
+  .toolbar button{
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;
+    background:var(--red); color:#fff; border:none; border-radius:999px;
+    padding:9px 20px; cursor:pointer; letter-spacing:.02em;
+  }
+  .toolbar button.ghost{background:transparent; color:#fff; border:1px solid #454850;}
+
+  .cover{
+    position:relative;
+    background:var(--ink);
+    color:#fff;
+    padding:90px 8vw 70px;
+    overflow:hidden;
+    border-bottom:6px solid var(--teal);
+  }
+  .cover::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(0,166,156,.35), transparent 60%),
+      radial-gradient(ellipse 700px 500px at -5% 110%, rgba(232,35,43,.22), transparent 60%);
+    pointer-events:none;
+  }
+  .cover-eyebrow{
+    position:relative; z-index:1;
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em;
+    color:#B9BBC0; text-transform:uppercase; margin-bottom:28px;
+  }
+  .cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+  .cover h1{
+    position:relative; z-index:1;
+    font-size:clamp(40px,7.6vw,92px);
+    font-weight:700; line-height:.96; letter-spacing:-.02em;
+  }
+  .cover h1 span{color:var(--teal);}
+  .cover .sub{
+    position:relative; z-index:1;
+    max-width:640px; margin-top:24px; font-size:18px; color:#D6D7DA;
+  }
+  .cover .badges{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+  .badge{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em;
+    border:1px solid #3c3f47; color:#C8C9CD; padding:7px 13px; border-radius:999px;
+  }
+  .cover-vin{
+    position:relative; z-index:1; margin-top:56px; display:flex; gap:36px; flex-wrap:wrap;
+    border-top:1px solid #33363d; padding-top:22px;
+  }
+  .cover-vin div{font-family:'JetBrains Mono',monospace; font-size:12px; color:#9A9CA1;}
+  .cover-vin strong{display:block; color:#fff; font-size:14px; margin-top:3px; font-weight:600;}
+
+  .toc-wrap{padding:56px 8vw 20px; max-width:1400px; margin:0 auto;}
+  .toc-wrap h2{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel); margin-bottom:22px;}
+  .toc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+  .toc-item{
+    display:flex; align-items:center; gap:14px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; text-decoration:none; color:var(--ink);
+  }
+  .toc-num{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px;
+    color:var(--teal); width:28px; flex-shrink:0;
+  }
+  .toc-item span.t{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+  .toc-item span.d{display:block; font-size:12px; color:var(--steel); margin-top:1px;}
+
+  .section{padding:64px 8vw; max-width:1400px; margin:0 auto;}
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+    border-bottom:3px solid var(--ink); padding-bottom:16px; margin-bottom:34px; flex-wrap:wrap;
+  }
+  .section-head .left{display:flex; align-items:center; gap:16px;}
+  .section-num{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px;
+    color:#fff; background:var(--ink); border-radius:8px; padding:6px 11px;
+  }
+  .section-head h2{font-size:clamp(26px,3.6vw,42px); letter-spacing:-.01em;}
+  .section-head p{font-size:14px; color:var(--steel); max-width:360px; text-align:right; margin:0;}
+
+  .subhead{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px;
+    margin:38px 0 16px; color:var(--ink);
+  }
+  .subhead:first-of-type{margin-top:0;}
+  .subhead .bar{width:5px; height:20px; background:var(--teal); border-radius:2px; display:inline-block;}
+
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:18px 18px 16px; break-inside:avoid; position:relative;
+  }
+  .card h4{font-size:15.5px; font-weight:600; margin-bottom:6px; padding-right:6px;}
+  .card p{font-size:13.3px; color:#3d3f45; margin:0;}
+  .tag{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px;
+    letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:6px;
+    margin-bottom:9px; font-weight:700;
+  }
+  .tag.save{background:#E4F3EF; color:var(--teal);}
+  .tag.watch{background:#FBEFDC; color:#9A6A17;}
+  .tag.myth{background:#FCE7E8; color:var(--red);}
+  .tag.hw{background:#EDEDED; color:var(--steel);}
+
+  .callout{
+    background:#101216; color:#fff; border-radius:16px; padding:26px 28px; margin:20px 0 8px;
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .callout h4{color:#fff; font-size:15px; margin-bottom:6px;}
+  .callout p{color:#C7C8CC; font-size:13.3px; margin:0;}
+
+  .two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:24px;}
+  @media (max-width:820px){.two-col{grid-template-columns:1fr;}}
+
+  table.spec{width:100%; border-collapse:collapse; font-size:13.5px;}
+  table.spec th{
+    text-align:left; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--steel); border-bottom:2px solid var(--ink); padding:8px 10px;
+  }
+  table.spec td{padding:10px 10px; border-bottom:1px solid var(--line);}
+  table.spec tr:last-child td{border-bottom:none;}
+
+  .divider-strip{
+    height:34px; background:repeating-linear-gradient(-45deg, var(--ink), var(--ink) 10px, var(--teal) 10px, var(--teal) 20px);
+    opacity:.9;
+  }
+
+  .footer{
+    background:var(--ink); color:#9A9CA1; text-align:center; padding:44px 20px 60px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.9;
+  }
+  .footer strong{color:#fff;}
+  .footer a{color:var(--teal); text-decoration:none;}
+
+  .egg{
+    border:1.5px dashed var(--teal); border-radius:14px; padding:18px 20px; background:#F0FAF8;
+  }
+  .egg h4{color:var(--teal);}
+
+  .rank-strip{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+  .rank-row{
+    display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+  }
+  .rank-row .rnum{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:18px; color:var(--teal);}
+  .rank-row .rtitle{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+  .rank-row .rsub{font-size:12.5px; color:var(--steel); margin-top:1px;}
+  .rank-row .rval{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink); background:#EFEEE8; padding:5px 10px; border-radius:8px; white-space:nowrap;}
+
+  @media print{
+    .toolbar{display:none;}
+    body{background:#fff;}
+    .cover{padding:40px 6vw 30px;}
+    .section{padding:26px 6vw; page-break-after:auto;}
+    .card{break-inside:avoid; box-shadow:none;}
+    .card-grid{grid-template-columns:repeat(2,1fr);}
+    .callout,.egg,.rank-row{break-inside:avoid;}
+    a{color:inherit; text-decoration:none;}
+    .divider-strip{height:14px;}
+  }
+  @media (max-width:640px){
+    .card-grid{grid-template-columns:1fr;}
+    .section-head p{display:none;}
+    .rank-row{grid-template-columns:32px 1fr; row-gap:4px;}
+    .rank-row .rval{grid-column:2; justify-self:start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="ghost" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+  <div class="cover-eyebrow"><span class="dot"></span> OWNER'S MONEY GUIDE · CHARGING, COSTS &amp; SMART HABITS</div>
+  <h1>CHARGE SMART.<br>SPEND <span>LESS.</span></h1>
+  <p class="sub">A practical companion to the Feature Guide: when to plug in, how to keep your electric bill (and everything else) as low as possible, and the everyday habits that keep your Model Y happy for the long haul.</p>
+  <div class="badges">
+    <span class="badge">HOME vs. SUPERCHARGING</span>
+    <span class="badge">OFF-PEAK STRATEGY</span>
+    <span class="badge">INSURANCE &amp; MAINTENANCE SAVINGS</span>
+    <span class="badge">LONG-TERM BATTERY HEALTH</span>
+  </div>
+  <div class="cover-vin">
+    <div>PAIRS WITH<strong>Model Y 2025+ Feature Guide</strong></div>
+    <div>BUILT FOR<strong>Owners who'd rather road-trip than research</strong></div>
+    <div>UPDATED<strong>Incentive landscape as of Aug 2026</strong></div>
+  </div>
+</header>
+
+<!-- ===================== TOC ===================== -->
+<div class="toc-wrap">
+  <h2>What's inside</h2>
+  <div class="toc-grid">
+    <a class="toc-item" href="#when"><span class="toc-num">01</span><span><span class="t">When to Charge</span><span class="d">Timing it around cheap electricity</span></span></a>
+    <a class="toc-item" href="#home"><span class="toc-num">02</span><span><span class="t">Home Charging Setup</span><span class="d">Getting the hardware right, once</span></span></a>
+    <a class="toc-item" href="#supercharging"><span class="toc-num">03</span><span><span class="t">Supercharging Smart</span><span class="d">Fast charging without overpaying</span></span></a>
+    <a class="toc-item" href="#incentives"><span class="toc-num">04</span><span><span class="t">Rebates &amp; Incentives</span><span class="d">What's actually still available</span></span></a>
+    <a class="toc-item" href="#money"><span class="toc-num">05</span><span><span class="t">Everyday Money-Savers</span><span class="d">Insurance, service, referrals</span></span></a>
+    <a class="toc-item" href="#battery"><span class="toc-num">06</span><span><span class="t">Battery &amp; Range Longevity</span><span class="d">Protecting your biggest asset</span></span></a>
+    <a class="toc-item" href="#app"><span class="toc-num">07</span><span><span class="t">App &amp; Software Tricks</span><span class="d">Free features you're probably not using</span></span></a>
+    <a class="toc-item" href="#general"><span class="toc-num">08</span><span><span class="t">General Owner Tips</span><span class="d">Small habits, fewer headaches</span></span></a>
+    <a class="toc-item" href="#roadtrip"><span class="toc-num">09</span><span><span class="t">Road Trip Prep</span><span class="d">Longer drives, less stress</span></span></a>
+    <a class="toc-item" href="#resale"><span class="toc-num">10</span><span><span class="t">Resale &amp; Long-Term Value</span><span class="d">Keeping options open down the road</span></span></a>
+  </div>
+</div>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 01 WHEN TO CHARGE ===================== -->
+<section class="section" id="when">
+  <div class="section-head">
+    <div class="left"><span class="section-num">01</span><h2>When to Charge</h2></div>
+    <p>Electricity has rush hour pricing too — plugging in at the right time is the single biggest lever you control.</p>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>Check for time-of-use (TOU) rates</div>
+  <div class="card-grid">
+    <div class="card"><span class="tag save">BIGGEST LEVER</span><h4>Ask your utility about TOU plans</h4><p>Many utilities charge 2–4x more for power during evening peak hours (often 4–9pm) than overnight. Switching to a TOU plan and charging late at night can meaningfully cut your per-mile cost.</p></div>
+    <div class="card"><h4>Schedule charging, don't "just plug in"</h4><p>Set a charging schedule in the car (Controls &gt; Charging) or the app so it waits for off-peak hours automatically, even if you plug in as soon as you get home.</p></div>
+    <div class="card"><h4>Use "Scheduled Departure" for a warm start</h4><p>Instead of charging the moment you plug in, tell the car when you're leaving — it'll finish charging and precondition the cabin/battery right on time, off-peak.</p></div>
+    <div class="card"><h4>Avoid the 4–9pm window</h4><p>This is peak demand for most grids in the U.S. — the worst possible time to pull extra amps if you have any flexibility at all.</p></div>
+  </div>
+
+  <div class="subhead"><span class="bar"></span>How full, how often</div>
+  <div class="rank-strip">
+    <div class="rank-row"><span class="rnum">1</span><span><span class="rtitle">Daily driving</span><span class="rsub">Charge to 50–80% overnight at home — most owners rarely need a full battery</span></span><span class="rval">Cheapest &amp; battery-friendly</span></div>
+    <div class="rank-row"><span class="rnum">2</span><span><span class="rtitle">Day before a road trip</span><span class="rsub">Bump the limit to 90–100% the night before you actually need the range</span></span><span class="rval">Occasional use only</span></div>
+    <div class="rank-row"><span class="rnum">3</span><span><span class="rtitle">Topping off at a Supercharger</span><span class="rsub">Charge to what gets you to the next stop, not to 100% — speed drops sharply above ~80%</span></span><span class="rval">Faster &amp; cheaper</span></div>
+  </div>
+
+  <div class="callout">
+    <div>
+      <h4>💡 Rule of thumb</h4>
+      <p>Home charging is almost always your cheapest option per mile, off-peak home charging is cheaper still, and Supercharging is for trips — not routine top-ups.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 02 HOME CHARGING SETUP ===================== -->
+<section class="section" id="home">
+  <div class="section-head">
+    <div class="left"><span class="section-num">02</span><h2>Home Charging Setup</h2></div>
+    <p>Get the hardware decision right once and every charge after that is basically free effort.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Wall Connector (Level 2)</h4><p>Fastest home option — adds a full charge overnight. Worth the install cost if you drive daily or plan to keep the car long-term.</p></div>
+    <div class="card"><h4>Mobile Connector + NEMA 14-50</h4><p>A cheaper middle ground: a standard high-power outlet (like a dryer outlet) plus the portable connector that ships with the car.</p></div>
+    <div class="card"><span class="tag watch">SLOWEST</span><h4>Standard 120V outlet</h4><p>Works in a pinch (a few miles of range per hour) but is rarely enough for daily driving unless your commute is very short.</p></div>
+    <div class="card"><h4>Get 2–3 electrician quotes</h4><p>Wall Connector installs vary widely by panel capacity and run length — always compare quotes rather than taking the first one.</p></div>
+    <div class="card"><h4>Ask about a dedicated EV meter</h4><p>Some utilities offer a discounted EV-only rate if you install a second meter just for the charger — worth asking about before you install anything.</p></div>
+    <div class="card"><h4>Check your panel capacity first</h4><p>An electrician can tell you in minutes whether your existing panel supports a Wall Connector or needs an upgrade — cheaper to know upfront.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 03 SUPERCHARGING SMART ===================== -->
+<section class="section" id="supercharging">
+  <div class="section-head">
+    <div class="left"><span class="section-num">03</span><h2>Supercharging Smart</h2></div>
+    <p>Fast charging is convenient by design — a few habits keep it from being expensive by accident.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Charge to what you need, not 100%</h4><p>Charging speed tapers dramatically past ~80% — stopping there instead of waiting for 100% saves both time and money on a per-minute-priced session.</p></div>
+    <div class="card"><h4>Let navigation pick the stop</h4><p>Routing an in-car trip automatically chooses efficient Supercharger stops and preconditions the battery for faster charging on arrival.</p></div>
+    <div class="card"><span class="tag watch">WATCH FOR</span><h4>Idle fees</h4><p>Some Supercharger stations charge a per-minute idle fee if you leave the car plugged in after it's finished charging — move it once you're done, especially when busy.</p></div>
+    <div class="card"><h4>Off-peak Supercharging pricing</h4><p>Pricing at some stations varies by time of day and local demand — the in-car map shows the live rate at each station before you commit.</p></div>
+    <div class="card"><h4>Charge during your stop, not for your stop</h4><p>Plan a bathroom/food break around the charge time rather than sitting and waiting — it doesn't cost more, but it feels like it costs less.</p></div>
+    <div class="card"><h4>Non-Tesla stations, checked in-app</h4><p>The Tesla app and in-car map both show nearby non-Tesla fast chargers your car supports — worth comparing pricing when you're off the beaten path.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 04 REBATES & INCENTIVES ===================== -->
+<section class="section" id="incentives">
+  <div class="section-head">
+    <div class="left"><span class="section-num">04</span><h2>Rebates &amp; Incentives</h2></div>
+    <p>The federal purchase credit landscape changed in 2025 — here's what's actually left to check.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><span class="tag myth">CHANGED IN 2025</span><h4>Federal EV purchase credit</h4><p>The federal new/used EV purchase tax credits ended for vehicles acquired after September 30, 2025. If you bought before that date under a binding contract, you may still qualify — otherwise, it no longer applies to new purchases.</p></div>
+    <div class="card"><h4>Home charger credit (Section 30C)</h4><p>A federal credit for home EV charging equipment has had its own, separate deadline — confirm current status and eligibility with a tax professional before assuming it still applies.</p></div>
+    <div class="card"><span class="tag save">STILL WORTH CHECKING</span><h4>State &amp; utility incentives</h4><p>Many states and local utilities still offer their own EV rebates, reduced registration fees, HOV lane access, or discounted charging rates — these are separate from federal programs and change often.</p></div>
+    <div class="card"><h4>Check before, not after</h4><p>Incentive programs shift quickly. Always verify current eligibility on your state energy office's site or with a tax professional rather than relying on last year's numbers.</p></div>
+    <div class="card"><h4>Referral rewards</h4><p>Tesla periodically runs owner-referral programs with perks for both the referrer and the new buyer — check the "Referrals" section of the app since offers rotate.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 05 EVERYDAY MONEY-SAVERS ===================== -->
+<section class="section" id="money">
+  <div class="section-head">
+    <div class="left"><span class="section-num">05</span><h2>Everyday Money-Savers</h2></div>
+    <p>Ownership costs beyond the electricity bill — and where there's real room to trim them.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Shop insurance annually</h4><p>EV insurance rates vary a lot by carrier. Compare quotes yearly, and ask specifically whether the insurer has EV/Tesla experience — repair cost estimates differ widely.</p></div>
+    <div class="card"><h4>Usage-based insurance options</h4><p>Some insurers (including Tesla's own insurance product, where available) price partly on your real driving behavior — smoother, more cautious driving can lower your premium over time.</p></div>
+    <div class="card"><h4>Rotate your own tires</h4><p>Tire rotation is one of the few truly DIY-friendly maintenance items — many independent shops handle it cheaply if you'd rather not, without needing a Tesla-specific technician.</p></div>
+    <div class="card"><h4>Skip unnecessary "EV services"</h4><p>No oil changes, no transmission fluid, no spark plugs — be skeptical of any shop quoting you for maintenance items a Tesla simply doesn't have.</p></div>
+    <div class="card"><h4>Try before you buy FSD</h4><p>Full Self-Driving is available as a trial, monthly subscription, or one-time purchase — the subscription lets you test it for a month or two before committing to the larger upfront cost.</p></div>
+    <div class="card"><h4>Time software-linked purchases</h4><p>Pricing and trial availability for features like FSD change periodically — if you're on the fence, it costs nothing to check current pricing in the app before deciding.</p></div>
+    <div class="card"><h4>Genuine accessories, bought once</h4><p>Cheap third-party mats or covers that don't fit right can trap moisture or interfere with sensors — often costing more in the long run than buying the right part once.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 06 BATTERY & RANGE LONGEVITY ===================== -->
+<section class="section" id="battery">
+  <div class="section-head">
+    <div class="left"><span class="section-num">06</span><h2>Battery &amp; Range Longevity</h2></div>
+    <p>The battery is the most expensive part of the car — these habits keep it healthy for the long run.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><span class="tag save">DAILY HABIT</span><h4>Keep it between ~20–80%</h4><p>For everyday driving, a moderate daily charge limit is easier on long-term battery health than habitually charging to 100% or running it down near empty.</p></div>
+    <div class="card"><h4>Stay plugged in when parked long-term</h4><p>Leaving the car connected (even without actively charging) during extended time away helps the battery management system maintain a healthy state — better than letting it sit at a very low charge.</p></div>
+    <div class="card"><h4>Precondition before fast charging</h4><p>Letting navigation route you to a Supercharger warms the battery in advance, which charges faster and more efficiently than showing up cold.</p></div>
+    <div class="card"><h4>Moderate driving stretches range</h4><p>Smooth acceleration and steady speeds do more for real-world range than any single setting — aggressive driving is the biggest efficiency killer.</p></div>
+    <div class="card"><h4>Keep tires properly inflated</h4><p>Underinflated tires increase rolling resistance and quietly eat into both range and tire life — a monthly pressure check pays for itself.</p></div>
+    <div class="card"><h4>Extreme temperatures cost range temporarily</h4><p>Very hot or cold weather reduces efficiency and available regen — this is normal battery chemistry, not a fault, and usually recovers once temperatures moderate.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 07 APP & SOFTWARE TRICKS ===================== -->
+<section class="section" id="app">
+  <div class="section-head">
+    <div class="left"><span class="section-num">07</span><h2>App &amp; Software Tricks</h2></div>
+    <p>Free features that are already sitting in your car or your phone.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Energy app</h4><p>Shows real trip-by-trip and long-term efficiency, helping you spot exactly which habits (routes, speeds, climate use) are costing you the most range.</p></div>
+    <div class="card"><h4>Charging cost estimates</h4><p>The in-car map and app both show an estimated cost before you start a Supercharging session, so there's rarely a surprise on the bill.</p></div>
+    <div class="card"><h4>Software update release notes</h4><p>Always worth a quick read — new updates regularly add small efficiency, charging, or convenience improvements at no extra cost.</p></div>
+    <div class="card"><h4>Schedule updates for overnight</h4><p>Set updates to install while you sleep instead of interrupting a weekend afternoon — the car will remind you when one's ready either way.</p></div>
+    <div class="card"><h4>Share keys, not passwords</h4><p>Add trusted drivers as Phone Keys with adjustable permissions instead of handing over your login — safer, and easy to revoke later.</p></div>
+    <div class="card"><h4>Set a charge-limit reminder</h4><p>If you only occasionally need a full charge, the app can prompt you before a long trip so you're not stuck adjusting the limit at 6am.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 08 GENERAL OWNER TIPS ===================== -->
+<section class="section" id="general">
+  <div class="section-head">
+    <div class="left"><span class="section-num">08</span><h2>General Owner Tips</h2></div>
+    <p>The small habits that prevent 90% of "wait, is this normal?" moments.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Clean camera lenses regularly</h4><p>A dirty fender or bumper camera can quietly disable Autopilot and safety features — wipe them down with the rest of your regular car care.</p></div>
+    <div class="card"><span class="tag myth">COMMON MYTH</span><h4>"Sentry Mode drains the battery fast"</h4><p>It does use some energy while parked, but for most owners it's a small daily draw, not a dealbreaker — turn it off in very low-traffic private parking if you're range-conscious.</p></div>
+    <div class="card"><h4>Don't ignore small alerts</h4><p>Tap "Learn More" on any touchscreen alert rather than dismissing it — most are informational, but a few (like tire pressure) are worth acting on quickly.</p></div>
+    <div class="card"><h4>Winter-proof the charge port</h4><p>In icy climates, a quick check that the charge port door isn't frozen shut saves a frustrating morning — a soft cloth and patience beats force.</p></div>
+    <div class="card"><h4>Use garage mode features if you have a garage</h4><p>Smart Garage (HomeLink) setup takes five minutes once and saves you fumbling for a separate remote every single day after.</p></div>
+    <div class="card"><h4>Set up Valet Mode before handing over keys</h4><p>Anytime someone else is driving without you — a valet, a shop, a teen driver's first solo trip — it takes seconds and protects your data and settings.</p></div>
+    <div class="card"><h4>Know your manual door releases</h4><p>Find the mechanical backups for your doors and frunk once, calmly, rather than discovering them for the first time during a power issue.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 09 ROAD TRIP PREP ===================== -->
+<section class="section" id="roadtrip">
+  <div class="section-head">
+    <div class="left"><span class="section-num">09</span><h2>Road Trip Prep</h2></div>
+    <p>A little planning turns "range anxiety" into just... a normal trip.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Let the car plan the route</h4><p>Enter your final destination before you leave — the in-car navigation automatically inserts Supercharger stops and estimates arrival battery %.</p></div>
+    <div class="card"><h4>Charge to 90–100% the night before</h4><p>Only for the day you're actually road-tripping — no need to keep the battery at a high charge level day-to-day otherwise.</p></div>
+    <div class="card"><h4>Check tire pressure before a long haul</h4><p>Cold mornings and long highway stretches both affect pressure — a quick check the day before avoids a mid-trip warning.</p></div>
+    <div class="card"><h4>Download offline maps for dead zones</h4><p>Handy for remote stretches with weak cell coverage, so navigation doesn't stall out right when you need it most.</p></div>
+    <div class="card"><h4>Pack the mobile connector anyway</h4><p>Even on a Supercharger-heavy route, a backup way to trickle-charge from a regular outlet is good insurance for the unexpected detour.</p></div>
+    <div class="card"><h4>Use Theater during your charging stop</h4><p>A 20–30 minute Supercharger stop is a good excuse for a coffee, a walk, or a few minutes of streaming video right from the car.</p></div>
+  </div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 10 RESALE & LONG-TERM VALUE ===================== -->
+<section class="section" id="resale">
+  <div class="section-head">
+    <div class="left"><span class="section-num">10</span><h2>Resale &amp; Long-Term Value</h2></div>
+    <p>Small habits now that pay off if and when you ever sell or trade in.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card"><h4>Keep charging habits moderate</h4><p>A battery that's been kept in a healthy daily range tends to show better health metrics down the line than one that's lived at extremes.</p></div>
+    <div class="card"><h4>Protect the interior early</h4><p>Seat covers or a simple cargo liner in the first few months cost little and go a long way toward keeping factory upholstery in trade-in-ready shape.</p></div>
+    <div class="card"><h4>Keep a maintenance record</h4><p>Even with minimal scheduled maintenance, saving service and tire records in the app gives a future buyer confidence in how the car was cared for.</p></div>
+    <div class="card"><h4>Understand transferability before you buy add-ons</h4><p>Some software features transfer with the car when sold and some don't — worth checking current policy before assuming an add-on adds resale value.</p></div>
+    <div class="card"><h4>Time the market if you can</h4><p>Used EV values can move with new-model pricing changes and incentive news — if you have flexibility on timing a sale, it's worth a quick look at recent comparable listings first.</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div><strong>MODEL Y — CHARGING, COSTS &amp; OWNER TIPS</strong></div>
+  <div>General guidance for U.S. owners — rates, incentives, and program details vary by location, utility, and change frequently.</div>
+  <div>Always confirm current tax credit and rebate details with a tax professional or your state energy office before relying on them.</div>
+  <div>Not an official Tesla document · Companion to the Model Y 2025+ Feature Guide 🧡</div>
+</footer>
+
+</body>
+</html>
