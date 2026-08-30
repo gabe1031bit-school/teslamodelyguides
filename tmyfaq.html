@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Y — FAQ &amp; Common Myths</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#171A20;
+--paper:#F6F5F1;
+--card:#FFFFFF;
+--red:#E8232B;
+--teal:#00A69C;
+--steel:#5C5E62;
+--line:#DEDCD4;
+--forest:#4C8C4A;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0;}
+.mono{font-family:'JetBrains Mono',monospace;}
+.toolbar{position:sticky; top:0; z-index:50; display:flex; justify-content:flex-end; gap:10px; background:var(--ink); padding:10px 24px;}
+.toolbar button{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; background:var(--red); color:#fff; border:none; border-radius:999px; padding:9px 20px; cursor:pointer; letter-spacing:.02em;}
+.toolbar button.ghost{background:transparent; color:#fff; border:1px solid #454850;}
+.cover{position:relative; background:var(--ink); color:#fff; padding:90px 8vw 70px; overflow:hidden; border-bottom:6px solid var(--forest);}
+.cover::before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse 900px 500px at 85% -10%, rgba(76,140,74,.32), transparent 60%), radial-gradient(ellipse 700px 500px at -5% 110%, rgba(0,166,156,.18), transparent 60%); pointer-events:none;}
+.cover-eyebrow{position:relative; z-index:1; display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em; color:#B9BBC0; text-transform:uppercase; margin-bottom:28px;}
+.cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--forest);}
+.cover h1{position:relative; z-index:1; font-size:clamp(40px,7.6vw,92px); font-weight:700; line-height:.96; letter-spacing:-.02em;}
+.cover h1 span{color:var(--forest);}
+.cover .sub{position:relative; z-index:1; max-width:640px; margin-top:24px; font-size:18px; color:#D6D7DA;}
+.cover .badges{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+.badge{font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em; border:1px solid #3c3f47; color:#C8C9CD; padding:7px 13px; border-radius:999px;}
+.cover-vin{position:relative; z-index:1; margin-top:56px; display:flex; gap:36px; flex-wrap:wrap; border-top:1px solid #33363d; padding-top:22px;}
+.cover-vin div{font-family:'JetBrains Mono',monospace; font-size:12px; color:#9A9CA1;}
+.cover-vin strong{display:block; color:#fff; font-size:14px; margin-top:3px; font-weight:600;}
+.toc-wrap{padding:56px 8vw 20px; max-width:1400px; margin:0 auto;}
+.toc-wrap h2{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel); margin-bottom:22px;}
+.toc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+.toc-item{display:flex; align-items:center; gap:14px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; text-decoration:none; color:var(--ink);}
+.toc-num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px; color:var(--forest); width:28px; flex-shrink:0;}
+.toc-item span.t{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+.toc-item span.d{display:block; font-size:12px; color:var(--steel); margin-top:1px;}
+.section{padding:64px 8vw; max-width:1400px; margin:0 auto;}
+.section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; border-bottom:3px solid var(--ink); padding-bottom:16px; margin-bottom:34px; flex-wrap:wrap;}
+.section-head .left{display:flex; align-items:center; gap:16px;}
+.section-num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px; color:#fff; background:var(--ink); border-radius:8px; padding:6px 11px;}
+.section-head h2{font-size:clamp(26px,3.6vw,42px); letter-spacing:-.01em;}
+.section-head p{font-size:14px; color:var(--steel); max-width:360px; text-align:right; margin:0;}
+.faq-list{display:flex; flex-direction:column; gap:12px;}
+.faq-item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px;}
+.faq-item h4{font-size:16px; font-weight:600; display:flex; gap:10px; align-items:flex-start;}
+.faq-item h4 .q{color:var(--forest); font-family:'JetBrains Mono',monospace; font-weight:700; flex-shrink:0;}
+.faq-item p{font-size:13.8px; color:#3d3f45; margin:8px 0 0 26px;}
+.tag{display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:6px; margin-bottom:9px; font-weight:700;}
+.tag.myth{background:#FCE7E8; color:var(--red);}
+.tag.save{background:#E4F3EF; color:var(--teal);}
+.callout{background:#101216; color:#fff; border-radius:16px; padding:26px 28px; margin:20px 0 8px; display:flex; gap:18px; align-items:flex-start;}
+.callout h4{color:#fff; font-size:15px; margin-bottom:6px;}
+.callout p{color:#C7C8CC; font-size:13.3px; margin:0;}
+.divider-strip{height:34px; background:repeating-linear-gradient(-45deg, var(--ink), var(--ink) 10px, var(--forest) 10px, var(--forest) 20px); opacity:.9;}
+.footer{background:var(--ink); color:#9A9CA1; text-align:center; padding:44px 20px 60px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.9;}
+.footer strong{color:#fff;}
+.footer a{color:var(--forest); text-decoration:none;}
+@media print{.toolbar{display:none;} body{background:#fff;} .cover{padding:40px 6vw 30px;} .section{padding:26px 6vw;} .faq-item{break-inside:avoid;} a{color:inherit; text-decoration:none;} .divider-strip{height:14px;}}
+@media (max-width:640px){.section-head p{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+<button class="ghost" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<header class="cover">
+<div class="cover-eyebrow"><span class="dot"></span> OWNER'S MONEY GUIDE · FAQ &amp; COMMON MYTHS</div>
+<h1>QUESTIONS,<br>ACTUALLY <span>ANSWERED.</span></h1>
+<p class="sub">The questions new owners ask most, and the myths that keep circulating even though they're outdated or just wrong.</p>
+<div class="badges">
+<span class="badge">NEW OWNER QUESTIONS</span>
+<span class="badge">MYTHS, DEBUNKED</span>
+<span class="badge">QUICK ANSWERS</span>
+</div>
+<div class="cover-vin">
+<div>PAIRS WITH<strong>All Model Y 2025+ Owner Guides</strong></div>
+<div>BUILT FOR<strong>Owners tired of conflicting forum advice</strong></div>
+<div>UPDATED<strong>Guidance current as of Aug 2026</strong></div>
+</div>
+</header>
+
+<div class="toc-wrap">
+<h2>What's inside</h2>
+<div class="toc-grid">
+<a class="toc-item" href="#new"><span class="toc-num">01</span><span><span class="t">New Owner Questions</span><span class="d">The basics everyone asks first</span></span></a>
+<a class="toc-item" href="#myths"><span class="toc-num">02</span><span><span class="t">Myths, Debunked</span><span class="d">Outdated or just wrong</span></span></a>
+<a class="toc-item" href="#money"><span class="toc-num">03</span><span><span class="t">Money Questions</span><span class="d">Costs people ask about most</span></span></a>
+</div>
+</div>
+
+<div class="divider-strip"></div>
+
+<section class="section" id="new">
+<div class="section-head"><div class="left"><span class="section-num">01</span><h2>New Owner Questions</h2></div><p>The basics almost every new owner asks in the first week.</p></div>
+<div class="faq-list">
+<div class="faq-item"><h4><span class="q">Q.</span> Do I need to charge to 100% every night?</h4><p>No — for daily driving, a moderate charge limit is easier on long-term battery health than routinely charging to full. Save 90–100% for the day before a longer trip.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> How do I open the doors if the 12V battery dies?</h4><p>There are mechanical backup releases for the doors, frunk, and trunk — it's worth locating and testing them once, calmly, rather than discovering them for the first time during an actual issue.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> Can someone else drive my car safely without my login?</h4><p>Yes — add them as a Phone Key or use a card key rather than sharing your account credentials. Permissions are adjustable and easy to revoke later.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> Is it normal for the car to make odd sounds while parked?</h4><p>Some background activity (battery conditioning, cabin overheat protection, etc.) can produce faint sounds while parked — if something sounds mechanically wrong rather than electronic, it's worth a service inquiry.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> Do I need a home charger installed right away?</h4><p>Not necessarily — a standard outlet or the included mobile connector can work temporarily for light driving while you compare Wall Connector installation quotes.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<section class="section" id="myths">
+<div class="section-head"><div class="left"><span class="section-num">02</span><h2>Myths, Debunked</h2></div><p>Some of these were true once, some never were.</p></div>
+<div class="faq-list">
+<div class="faq-item"><h4><span class="q"><span class="tag myth">MYTH</span></span> "Charging to 100% every night ruins the battery immediately"</h4><p>It's not an immediate problem, but it's not ideal for daily use either — the accurate advice is to keep it moderate day-to-day and save full charges for when you actually need the range.</p></div>
+<div class="faq-item"><h4><span class="q"><span class="tag myth">MYTH</span></span> "EVs are more likely to catch fire than gas cars"</h4><p>Broad safety statistics and reporting on this vary and are frequently debated — rather than repeating a stat here, it's worth looking at current, cited safety data if this matters to you.</p></div>
+<div class="faq-item"><h4><span class="q"><span class="tag myth">MYTH</span></span> "Cold weather 'kills' EV batteries"</h4><p>Cold temporarily reduces range and charging speed — this is normal battery chemistry, not permanent degradation, and performance returns once temperatures rise.</p></div>
+<div class="faq-item"><h4><span class="q"><span class="tag myth">MYTH</span></span> "You can't get a federal EV tax credit anymore, period"</h4><p>The federal new/used EV purchase credit ended for vehicles acquired after September 30, 2025, with some exceptions for binding contracts made earlier — but state and utility incentives are a separate, often still-active category worth checking.</p></div>
+<div class="faq-item"><h4><span class="q"><span class="tag myth">MYTH</span></span> "Sentry Mode will drain your battery overnight"</h4><p>It does use some energy while active, but for most owners it's a modest daily draw rather than a dealbreaker — worth disabling only in very low-traffic private parking if you're especially range-conscious.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<section class="section" id="money">
+<div class="section-head"><div class="left"><span class="section-num">03</span><h2>Money Questions</h2></div><p>The cost questions that come up most often.</p></div>
+<div class="faq-list">
+<div class="faq-item"><h4><span class="q">Q.</span> Is home charging really cheaper than gas?</h4><p>For most owners, yes — especially charging off-peak on a time-of-use electricity plan. Exact savings depend heavily on local electricity rates, so it's worth doing the math for your own utility.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> Are Superchargers more expensive than home charging?</h4><p>Generally yes, per mile — Supercharging is convenient for trips, but routine daily charging at home is almost always the cheaper habit.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> Is insurance more expensive for an EV?</h4><p>It varies by carrier and region — shopping quotes annually and asking specifically about EV/Tesla repair experience tends to matter more than the EV status alone.</p></div>
+<div class="faq-item"><h4><span class="q">Q.</span> Do I need to budget for regular maintenance costs?</h4><p>Ongoing costs are generally lower than a gas car's — no oil changes or engine maintenance — but tires wear a bit faster due to instant torque and added weight, so budget for that instead.</p></div>
+</div>
+<div class="callout">
+<div><h4>💡 Still have a question?</h4><p>Check the Feature, Charging, Maintenance, and Winter guides for deeper detail on any of these topics — most specific questions are covered in more depth there.</p></div>
+</div>
+</section>
+
+<footer class="footer">
+<div><strong>MODEL Y — FAQ &amp; COMMON MYTHS</strong></div>
+<div>General guidance for U.S. owners — always verify current pricing, incentives, and safety data from primary sources.</div>
+<div>Not an official Tesla document · Companion to the full Model Y 2025+ Owner Guide series 🧡</div>
+</footer>
+
+</body>
+</html>
