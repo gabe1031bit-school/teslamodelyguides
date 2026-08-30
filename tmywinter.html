@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Y — Winter Driving Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#171A20;
+--paper:#F6F5F1;
+--card:#FFFFFF;
+--red:#E8232B;
+--teal:#00A69C;
+--steel:#5C5E62;
+--line:#DEDCD4;
+--ice:#3E8EDE;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+background:var(--paper);
+color:var(--ink);
+font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0;}
+.mono{font-family:'JetBrains Mono',monospace;}
+.toolbar{
+position:sticky; top:0; z-index:50;
+display:flex; justify-content:flex-end; gap:10px;
+background:var(--ink); padding:10px 24px;
+}
+.toolbar button{
+font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;
+background:var(--red); color:#fff; border:none; border-radius:999px;
+padding:9px 20px; cursor:pointer; letter-spacing:.02em;
+}
+.toolbar button.ghost{background:transparent; color:#fff; border:1px solid #454850;}
+.cover{
+position:relative;
+background:var(--ink);
+color:#fff;
+padding:90px 8vw 70px;
+overflow:hidden;
+border-bottom:6px solid var(--ice);
+}
+.cover::before{
+content:"";
+position:absolute; inset:0;
+background:
+radial-gradient(ellipse 900px 500px at 85% -10%, rgba(62,142,222,.35), transparent 60%),
+radial-gradient(ellipse 700px 500px at -5% 110%, rgba(0,166,156,.20), transparent 60%);
+pointer-events:none;
+}
+.cover-eyebrow{
+position:relative; z-index:1;
+display:inline-flex; align-items:center; gap:10px;
+font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em;
+color:#B9BBC0; text-transform:uppercase; margin-bottom:28px;
+}
+.cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--ice);}
+.cover h1{
+position:relative; z-index:1;
+font-size:clamp(40px,7.6vw,92px);
+font-weight:700; line-height:.96; letter-spacing:-.02em;
+}
+.cover h1 span{color:var(--ice);}
+.cover .sub{
+position:relative; z-index:1;
+max-width:640px; margin-top:24px; font-size:18px; color:#D6D7DA;
+}
+.cover .badges{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+.badge{
+font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em;
+border:1px solid #3c3f47; color:#C8C9CD; padding:7px 13px; border-radius:999px;
+}
+.cover-vin{
+position:relative; z-index:1; margin-top:56px; display:flex; gap:36px; flex-wrap:wrap;
+border-top:1px solid #33363d; padding-top:22px;
+}
+.cover-vin div{font-family:'JetBrains Mono',monospace; font-size:12px; color:#9A9CA1;}
+.cover-vin strong{display:block; color:#fff; font-size:14px; margin-top:3px; font-weight:600;}
+.toc-wrap{padding:56px 8vw 20px; max-width:1400px; margin:0 auto;}
+.toc-wrap h2{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel); margin-bottom:22px;}
+.toc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+.toc-item{
+display:flex; align-items:center; gap:14px;
+background:var(--card); border:1px solid var(--line); border-radius:12px;
+padding:14px 16px; text-decoration:none; color:var(--ink);
+}
+.toc-num{
+font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px;
+color:var(--ice); width:28px; flex-shrink:0;
+}
+.toc-item span.t{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+.toc-item span.d{display:block; font-size:12px; color:var(--steel); margin-top:1px;}
+.section{padding:64px 8vw; max-width:1400px; margin:0 auto;}
+.section-head{
+display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+border-bottom:3px solid var(--ink); padding-bottom:16px; margin-bottom:34px; flex-wrap:wrap;
+}
+.section-head .left{display:flex; align-items:center; gap:16px;}
+.section-num{
+font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px;
+color:#fff; background:var(--ink); border-radius:8px; padding:6px 11px;
+}
+.section-head h2{font-size:clamp(26px,3.6vw,42px); letter-spacing:-.01em;}
+.section-head p{font-size:14px; color:var(--steel); max-width:360px; text-align:right; margin:0;}
+.subhead{
+display:flex; align-items:center; gap:10px;
+font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px;
+margin:38px 0 16px; color:var(--ink);
+}
+.subhead:first-of-type{margin-top:0;}
+.subhead .bar{width:5px; height:20px; background:var(--ice); border-radius:2px; display:inline-block;}
+.card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px;}
+.card{
+background:var(--card); border:1px solid var(--line); border-radius:14px;
+padding:18px 18px 16px; break-inside:avoid; position:relative;
+}
+.card h4{font-size:15.5px; font-weight:600; margin-bottom:6px; padding-right:6px;}
+.card p{font-size:13.3px; color:#3d3f45; margin:0;}
+.tag{
+display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px;
+letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:6px;
+margin-bottom:9px; font-weight:700;
+}
+.tag.save{background:#E4F3EF; color:var(--teal);}
+.tag.watch{background:#FBEFDC; color:#9A6A17;}
+.tag.myth{background:#FCE7E8; color:var(--red);}
+.tag.hw{background:#E7F0FC; color:var(--ice);}
+.callout{
+background:#101216; color:#fff; border-radius:16px; padding:26px 28px; margin:20px 0 8px;
+display:flex; gap:18px; align-items:flex-start;
+}
+.callout h4{color:#fff; font-size:15px; margin-bottom:6px;}
+.callout p{color:#C7C8CC; font-size:13.3px; margin:0;}
+.two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:24px;}
+@media (max-width:820px){.two-col{grid-template-columns:1fr;}}
+table.spec{width:100%; border-collapse:collapse; font-size:13.5px;}
+table.spec th{
+text-align:left; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em;
+text-transform:uppercase; color:var(--steel); border-bottom:2px solid var(--ink); padding:8px 10px;
+}
+table.spec td{padding:10px 10px; border-bottom:1px solid var(--line);}
+table.spec tr:last-child td{border-bottom:none;}
+.divider-strip{
+height:34px; background:repeating-linear-gradient(-45deg, var(--ink), var(--ink) 10px, var(--ice) 10px, var(--ice) 20px);
+opacity:.9;
+}
+.footer{
+background:var(--ink); color:#9A9CA1; text-align:center; padding:44px 20px 60px;
+font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.9;
+}
+.footer strong{color:#fff;}
+.footer a{color:var(--ice); text-decoration:none;}
+.egg{
+border:1.5px dashed var(--ice); border-radius:14px; padding:18px 20px; background:#EEF5FD;
+}
+.egg h4{color:var(--ice);}
+.rank-strip{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+.rank-row{
+display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px;
+background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+}
+.rank-row .rnum{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:18px; color:var(--ice);}
+.rank-row .rtitle{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+.rank-row .rsub{font-size:12.5px; color:var(--steel); margin-top:1px;}
+.rank-row .rval{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink); background:#EFEEE8; padding:5px 10px; border-radius:8px; white-space:nowrap;}
+@media print{
+.toolbar{display:none;}
+body{background:#fff;}
+.cover{padding:40px 6vw 30px;}
+.section{padding:26px 6vw; page-break-after:auto;}
+.card{break-inside:avoid; box-shadow:none;}
+.card-grid{grid-template-columns:repeat(2,1fr);}
+.callout,.egg,.rank-row{break-inside:avoid;}
+a{color:inherit; text-decoration:none;}
+.divider-strip{height:14px;}
+}
+@media (max-width:640px){
+.card-grid{grid-template-columns:1fr;}
+.section-head p{display:none;}
+.rank-row{grid-template-columns:32px 1fr; row-gap:4px;}
+.rank-row .rval{grid-column:2; justify-self:start;}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+<button class="ghost" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+<div class="cover-eyebrow"><span class="dot"></span> OWNER'S MONEY GUIDE · WINTER &amp; COLD WEATHER DRIVING</div>
+<h1>COLD DAYS.<br>CALM <span>DRIVES.</span></h1>
+<p class="sub">A practical companion to the Feature, Charging, and Maintenance guides: what actually changes about range, charging, and handling once temperatures drop — and the habits that make winter driving a non-event.</p>
+<div class="badges">
+<span class="badge">RANGE IN THE COLD</span>
+<span class="badge">COLD-WEATHER CHARGING</span>
+<span class="badge">TRACTION &amp; TIRES</span>
+<span class="badge">ICE &amp; SNOW REMOVAL</span>
+</div>
+<div class="cover-vin">
+<div>PAIRS WITH<strong>Model Y 2025+ Feature, Charging &amp; Maintenance Guides</strong></div>
+<div>BUILT FOR<strong>Owners facing their first real winter in the car</strong></div>
+<div>UPDATED<strong>Guidance current as of Aug 2026</strong></div>
+</div>
+</header>
+
+<!-- ===================== TOC ===================== -->
+<div class="toc-wrap">
+<h2>What's inside</h2>
+<div class="toc-grid">
+<a class="toc-item" href="#range"><span class="toc-num">01</span><span><span class="t">Cold Weather Range</span><span class="d">Setting realistic expectations</span></span></a>
+<a class="toc-item" href="#precondition"><span class="toc-num">02</span><span><span class="t">Preconditioning</span><span class="d">Warm car, warm battery, before you unplug</span></span></a>
+<a class="toc-item" href="#charging"><span class="toc-num">03</span><span><span class="t">Charging in the Cold</span><span class="d">Why it's slower and how to work with it</span></span></a>
+<a class="toc-item" href="#traction"><span class="toc-num">04</span><span><span class="t">Tires &amp; Traction</span><span class="d">The single biggest safety lever</span></span></a>
+<a class="toc-item" href="#port"><span class="toc-num">05</span><span><span class="t">Charge Port &amp; Door Care</span><span class="d">Avoiding frozen-shut mornings</span></span></a>
+<a class="toc-item" href="#snow"><span class="toc-num">06</span><span><span class="t">Snow &amp; Ice Removal</span><span class="d">Doing it without damaging anything</span></span></a>
+<a class="toc-item" href="#software"><span class="toc-num">07</span><span><span class="t">Software Features That Help</span><span class="d">Built-in tools worth knowing about</span></span></a>
+<a class="toc-item" href="#roadtrip"><span class="toc-num">08</span><span><span class="t">Winter Road Trips</span><span class="d">Planning around shorter range</span></span></a>
+</div>
+</div>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 01 COLD WEATHER RANGE ===================== -->
+<section class="section" id="range">
+<div class="section-head">
+<div class="left"><span class="section-num">01</span><h2>Cold Weather Range</h2></div>
+<p>The drop is real, temporary, and normal battery chemistry — not a fault.</p>
+</div>
+<div class="card-grid">
+<div class="card"><span class="tag watch">EXPECT THIS</span><h4>Range drops in cold weather</h4><p>Battery chemistry is simply less efficient when cold, and cabin heating draws additional energy — a noticeable range reduction in freezing temperatures is normal, not a sign of a problem.</p></div>
+<div class="card"><h4>It recovers once temperatures rise</h4><p>The efficiency loss is temporary and tied to ambient and battery temperature — range returns to normal as things warm up, with no lasting effect on battery health.</p></div>
+<div class="card"><h4>Cabin heat costs more than seat heaters</h4><p>Heating the whole cabin uses more energy than heating just the seats and steering wheel — using seat/wheel heat as your primary warmth source stretches range further.</p></div>
+<div class="card"><h4>Watch the Energy app in winter</h4><p>It's especially useful this time of year for seeing exactly how much of your energy use is going to climate versus driving.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 02 PRECONDITIONING ===================== -->
+<section class="section" id="precondition">
+<div class="section-head">
+<div class="left"><span class="section-num">02</span><h2>Preconditioning</h2></div>
+<p>The single best winter habit — warm the car while it's still plugged in.</p>
+</div>
+<div class="card-grid">
+<div class="card"><span class="tag save">BIGGEST LEVER</span><h4>Precondition before you unplug</h4><p>Warming the cabin and battery while still connected to power uses grid electricity instead of battery charge — you start your drive warm without paying range for it.</p></div>
+<div class="card"><h4>Schedule it to finish right on time</h4><p>Set a departure time in the app or car so preconditioning finishes just as you're ready to leave, rather than running longer than needed.</p></div>
+<div class="card"><h4>A warm battery also means better regen</h4><p>Regenerative braking is limited when the battery is cold — preconditioning helps restore full regen sooner into your drive.</p></div>
+<div class="card"><h4>Remote start from the app on cold mornings</h4><p>No need to go outside first — start preconditioning from the app a few minutes before you head out.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 03 CHARGING IN THE COLD ===================== -->
+<section class="section" id="charging">
+<div class="section-head">
+<div class="left"><span class="section-num">03</span><h2>Charging in the Cold</h2></div>
+<p>A cold battery charges slower — a couple of habits work around it easily.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Precondition before Supercharging</h4><p>Routing to a Supercharger via in-car navigation warms the battery in advance, which noticeably speeds up charging on arrival versus showing up cold.</p></div>
+<div class="card"><span class="tag watch">EXPECT THIS</span><h4>Home charging is slower too</h4><p>Overnight charging in very cold weather may take somewhat longer — plan slightly more charging time on the coldest nights if you need a full charge by morning.</p></div>
+<div class="card"><h4>Keep it plugged in overnight when very cold</h4><p>Staying connected helps the car manage battery temperature automatically, even outside active charging windows.</p></div>
+<div class="card"><h4>Don't panic at a lower % after a cold soak</h4><p>A charge level that looked fine the night before can read a bit lower on a very cold morning — this is normal and typically self-corrects once driving begins.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 04 TIRES & TRACTION ===================== -->
+<section class="section" id="traction">
+<div class="section-head">
+<div class="left"><span class="section-num">04</span><h2>Tires &amp; Traction</h2></div>
+<p>Nothing else on this page matters as much for safety as this section.</p>
+</div>
+<div class="rank-strip">
+<div class="rank-row"><span class="rnum">1</span><span><span class="rtitle">Dedicated winter tires</span><span class="rsub">The single biggest traction improvement in snow and sustained cold below ~45°F</span></span><span class="rval">Best option</span></div>
+<div class="rank-row"><span class="rnum">2</span><span><span class="rtitle">All-season tires, properly inflated</span><span class="rsub">Adequate for light winter conditions if you're not seeing regular snow or ice</span></span><span class="rval">Acceptable, climate-dependent</span></div>
+<div class="rank-row"><span class="rnum">3</span><span><span class="rtitle">Summer or worn tires</span><span class="rsub">Meaningfully reduced grip in cold and wet conditions — avoid if winter driving is a regular part of your routine</span></span><span class="rval">Not recommended</span></div>
+</div>
+<div class="callout">
+<div>
+<h4>💡 Rule of thumb</h4>
+<p>Instant torque means an EV can accelerate confidently on snow — but it can't out-brake or out-corner physics on worn or wrong-season tires.</p>
+</div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 05 CHARGE PORT & DOOR CARE ===================== -->
+<section class="section" id="port">
+<div class="section-head">
+<div class="left"><span class="section-num">05</span><h2>Charge Port &amp; Door Care</h2></div>
+<p>A few seconds of prevention beats a frustrating frozen-shut morning.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Check the charge port isn't iced shut</h4><p>After freezing rain or heavy snow, a quick look before you try to charge saves a struggle — a soft cloth and gentle pressure is safer than force.</p></div>
+<div class="card"><h4>Avoid slamming icy doors</h4><p>Door seals can stick in freezing temperatures — open gently rather than forcing, and avoid excess force on the frunk in icy weather too.</p></div>
+<div class="card"><h4>Clear snow from door handles</h4><p>Built-up snow or ice around handles is the most common source of "why won't my door open" on a snowy morning.</p></div>
+<div class="card"><h4>Wipe down seals occasionally in winter</h4><p>A light wipe of door and trunk seals helps prevent them from freezing shut after wet, cold weather.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 06 SNOW & ICE REMOVAL ===================== -->
+<section class="section" id="snow">
+<div class="section-head">
+<div class="left"><span class="section-num">06</span><h2>Snow &amp; Ice Removal</h2></div>
+<p>Getting the car clear without scratching paint or damaging sensors.</p>
+</div>
+<div class="card-grid">
+<div class="card"><span class="tag watch">USE CARE</span><h4>Use a soft brush, not a scraper, on the body</h4><p>Ice scrapers can scratch paint — a soft snow brush for the body and a proper plastic scraper only on glass avoids unnecessary damage.</p></div>
+<div class="card"><h4>Clear cameras and sensors first</h4><p>Before driving, clear snow and ice from all cameras and sensors — Autopilot and safety features rely on a clear view to work properly.</p></div>
+<div class="card"><h4>Don't pour hot water on frozen glass</h4><p>The temperature shock can crack cold glass — use the defrost system and a bit of patience instead.</p></div>
+<div class="card"><h4>Let defrost run before scraping</h4><p>A few minutes of cabin defrost loosens ice on the windshield, making manual scraping faster and gentler on the glass.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 07 SOFTWARE FEATURES THAT HELP ===================== -->
+<section class="section" id="software">
+<div class="section-head">
+<div class="left"><span class="section-num">07</span><h2>Software Features That Help</h2></div>
+<p>A few built-in tools most owners forget exist until the first cold snap.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Defrost/defog mode</h4><p>A dedicated setting that prioritizes clearing the windshield and windows quickly, separate from general cabin heating.</p></div>
+<div class="card"><h4>Scheduled departure with preconditioning</h4><p>Combines a warm cabin with off-peak charging timing, so you leave warm without charging during expensive hours.</p></div>
+<div class="card"><h4>Range display adjusts as you warm up</h4><p>Estimated range recalculates as the battery warms during your drive — the number you see cold-starting isn't your steady-state range.</p></div>
+<div class="card"><h4>Cabin overheat/cold protection settings</h4><p>Optional settings that maintain a minimum cabin temperature while parked — useful if pets or sensitive cargo are ever left in the car briefly.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 08 WINTER ROAD TRIPS ===================== -->
+<section class="section" id="roadtrip">
+<div class="section-head">
+<div class="left"><span class="section-num">08</span><h2>Winter Road Trips</h2></div>
+<p>Longer drives in cold weather just need slightly more margin, not a different plan.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Budget extra range margin</h4><p>Plan for shorter real-world range than in mild weather, and let in-car navigation account for it when routing Supercharger stops.</p></div>
+<div class="card"><h4>Precondition before every fast-charge stop</h4><p>This matters even more in winter, since a cold battery charges noticeably slower than a warmed one.</p></div>
+<div class="card"><h4>Pack a warm layer, not just chargers</h4><p>Simple insurance — if you ever end up waiting roadside for any reason, being prepared for the cold matters as much as the car being prepared.</p></div>
+<div class="card"><h4>Check road and weather conditions ahead</h4><p>Winter road trips benefit from checking conditions along the whole route, not just the destination, before you leave.</p></div>
+</div>
+</section>
+
+<footer class="footer">
+<div><strong>MODEL Y — WINTER DRIVING GUIDE</strong></div>
+<div>General guidance for U.S. owners — actual range, charging speed, and road conditions vary by climate and driving style.</div>
+<div>Always prioritize current road and weather advisories over any general guidance here.</div>
+<div>Not an official Tesla document · Companion to the Model Y 2025+ Feature, Charging &amp; Maintenance Guides 🧡</div>
+</footer>
+
+</body>
+</html>

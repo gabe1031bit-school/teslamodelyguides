@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Y — Maintenance &amp; Care Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#171A20;
+--paper:#F6F5F1;
+--card:#FFFFFF;
+--red:#E8232B;
+--teal:#00A69C;
+--steel:#5C5E62;
+--line:#DEDCD4;
+--amber:#E8A93A;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+background:var(--paper);
+color:var(--ink);
+font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0;}
+.mono{font-family:'JetBrains Mono',monospace;}
+.toolbar{
+position:sticky; top:0; z-index:50;
+display:flex; justify-content:flex-end; gap:10px;
+background:var(--ink); padding:10px 24px;
+}
+.toolbar button{
+font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;
+background:var(--red); color:#fff; border:none; border-radius:999px;
+padding:9px 20px; cursor:pointer; letter-spacing:.02em;
+}
+.toolbar button.ghost{background:transparent; color:#fff; border:1px solid #454850;}
+.cover{
+position:relative;
+background:var(--ink);
+color:#fff;
+padding:90px 8vw 70px;
+overflow:hidden;
+border-bottom:6px solid var(--amber);
+}
+.cover::before{
+content:"";
+position:absolute; inset:0;
+background:
+radial-gradient(ellipse 900px 500px at 85% -10%, rgba(232,169,58,.30), transparent 60%),
+radial-gradient(ellipse 700px 500px at -5% 110%, rgba(0,166,156,.22), transparent 60%);
+pointer-events:none;
+}
+.cover-eyebrow{
+position:relative; z-index:1;
+display:inline-flex; align-items:center; gap:10px;
+font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em;
+color:#B9BBC0; text-transform:uppercase; margin-bottom:28px;
+}
+.cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);}
+.cover h1{
+position:relative; z-index:1;
+font-size:clamp(40px,7.6vw,92px);
+font-weight:700; line-height:.96; letter-spacing:-.02em;
+}
+.cover h1 span{color:var(--amber);}
+.cover .sub{
+position:relative; z-index:1;
+max-width:640px; margin-top:24px; font-size:18px; color:#D6D7DA;
+}
+.cover .badges{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+.badge{
+font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em;
+border:1px solid #3c3f47; color:#C8C9CD; padding:7px 13px; border-radius:999px;
+}
+.cover-vin{
+position:relative; z-index:1; margin-top:56px; display:flex; gap:36px; flex-wrap:wrap;
+border-top:1px solid #33363d; padding-top:22px;
+}
+.cover-vin div{font-family:'JetBrains Mono',monospace; font-size:12px; color:#9A9CA1;}
+.cover-vin strong{display:block; color:#fff; font-size:14px; margin-top:3px; font-weight:600;}
+.toc-wrap{padding:56px 8vw 20px; max-width:1400px; margin:0 auto;}
+.toc-wrap h2{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel); margin-bottom:22px;}
+.toc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+.toc-item{
+display:flex; align-items:center; gap:14px;
+background:var(--card); border:1px solid var(--line); border-radius:12px;
+padding:14px 16px; text-decoration:none; color:var(--ink);
+}
+.toc-num{
+font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px;
+color:var(--amber); width:28px; flex-shrink:0;
+}
+.toc-item span.t{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+.toc-item span.d{display:block; font-size:12px; color:var(--steel); margin-top:1px;}
+.section{padding:64px 8vw; max-width:1400px; margin:0 auto;}
+.section-head{
+display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+border-bottom:3px solid var(--ink); padding-bottom:16px; margin-bottom:34px; flex-wrap:wrap;
+}
+.section-head .left{display:flex; align-items:center; gap:16px;}
+.section-num{
+font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px;
+color:#fff; background:var(--ink); border-radius:8px; padding:6px 11px;
+}
+.section-head h2{font-size:clamp(26px,3.6vw,42px); letter-spacing:-.01em;}
+.section-head p{font-size:14px; color:var(--steel); max-width:360px; text-align:right; margin:0;}
+.subhead{
+display:flex; align-items:center; gap:10px;
+font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px;
+margin:38px 0 16px; color:var(--ink);
+}
+.subhead:first-of-type{margin-top:0;}
+.subhead .bar{width:5px; height:20px; background:var(--amber); border-radius:2px; display:inline-block;}
+.card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px;}
+.card{
+background:var(--card); border:1px solid var(--line); border-radius:14px;
+padding:18px 18px 16px; break-inside:avoid; position:relative;
+}
+.card h4{font-size:15.5px; font-weight:600; margin-bottom:6px; padding-right:6px;}
+.card p{font-size:13.3px; color:#3d3f45; margin:0;}
+.tag{
+display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px;
+letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:6px;
+margin-bottom:9px; font-weight:700;
+}
+.tag.save{background:#E4F3EF; color:var(--teal);}
+.tag.watch{background:#FBEFDC; color:#9A6A17;}
+.tag.myth{background:#FCE7E8; color:var(--red);}
+.tag.hw{background:#EDEDED; color:var(--steel);}
+.callout{
+background:#101216; color:#fff; border-radius:16px; padding:26px 28px; margin:20px 0 8px;
+display:flex; gap:18px; align-items:flex-start;
+}
+.callout h4{color:#fff; font-size:15px; margin-bottom:6px;}
+.callout p{color:#C7C8CC; font-size:13.3px; margin:0;}
+.two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:24px;}
+@media (max-width:820px){.two-col{grid-template-columns:1fr;}}
+table.spec{width:100%; border-collapse:collapse; font-size:13.5px;}
+table.spec th{
+text-align:left; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em;
+text-transform:uppercase; color:var(--steel); border-bottom:2px solid var(--ink); padding:8px 10px;
+}
+table.spec td{padding:10px 10px; border-bottom:1px solid var(--line);}
+table.spec tr:last-child td{border-bottom:none;}
+.divider-strip{
+height:34px; background:repeating-linear-gradient(-45deg, var(--ink), var(--ink) 10px, var(--amber) 10px, var(--amber) 20px);
+opacity:.9;
+}
+.footer{
+background:var(--ink); color:#9A9CA1; text-align:center; padding:44px 20px 60px;
+font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.9;
+}
+.footer strong{color:#fff;}
+.footer a{color:var(--amber); text-decoration:none;}
+.egg{
+border:1.5px dashed var(--amber); border-radius:14px; padding:18px 20px; background:#FDF6E9;
+}
+.egg h4{color:#9A6A17;}
+.rank-strip{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+.rank-row{
+display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px;
+background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+}
+.rank-row .rnum{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:18px; color:var(--amber);}
+.rank-row .rtitle{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;}
+.rank-row .rsub{font-size:12.5px; color:var(--steel); margin-top:1px;}
+.rank-row .rval{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink); background:#EFEEE8; padding:5px 10px; border-radius:8px; white-space:nowrap;}
+@media print{
+.toolbar{display:none;}
+body{background:#fff;}
+.cover{padding:40px 6vw 30px;}
+.section{padding:26px 6vw; page-break-after:auto;}
+.card{break-inside:avoid; box-shadow:none;}
+.card-grid{grid-template-columns:repeat(2,1fr);}
+.callout,.egg,.rank-row{break-inside:avoid;}
+a{color:inherit; text-decoration:none;}
+.divider-strip{height:14px;}
+}
+@media (max-width:640px){
+.card-grid{grid-template-columns:1fr;}
+.section-head p{display:none;}
+.rank-row{grid-template-columns:32px 1fr; row-gap:4px;}
+.rank-row .rval{grid-column:2; justify-self:start;}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+<button class="ghost" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+<div class="cover-eyebrow"><span class="dot"></span> OWNER'S MONEY GUIDE · MAINTENANCE &amp; CARE</div>
+<h1>KEEP IT<br>RUNNING <span>RIGHT.</span></h1>
+<p class="sub">A practical companion to the Feature and Charging guides: the small maintenance habits that actually matter, the ones that don't, and how to tell the difference between a normal alert and something worth a service visit.</p>
+<div class="badges">
+<span class="badge">CLEANING &amp; CARE</span>
+<span class="badge">TIRES &amp; WHEELS</span>
+<span class="badge">WARNING LIGHTS DECODED</span>
+<span class="badge">DIY vs. SERVICE CENTER</span>
+</div>
+<div class="cover-vin">
+<div>PAIRS WITH<strong>Model Y 2025+ Feature &amp; Charging Guides</strong></div>
+<div>BUILT FOR<strong>Owners who want fewer surprises, not more chores</strong></div>
+<div>UPDATED<strong>Guidance current as of Aug 2026</strong></div>
+</div>
+</header>
+
+<!-- ===================== TOC ===================== -->
+<div class="toc-wrap">
+<h2>What's inside</h2>
+<div class="toc-grid">
+<a class="toc-item" href="#basics"><span class="toc-num">01</span><span><span class="t">Daily Care Basics</span><span class="d">The habits that cost nothing</span></span></a>
+<a class="toc-item" href="#cleaning"><span class="toc-num">02</span><span><span class="t">Cleaning In &amp; Out</span><span class="d">What's safe, what isn't</span></span></a>
+<a class="toc-item" href="#tires"><span class="toc-num">03</span><span><span class="t">Tires &amp; Wheels</span><span class="d">The most-neglected maintenance item</span></span></a>
+<a class="toc-item" href="#systems"><span class="toc-num">04</span><span><span class="t">Software &amp; Systems Checks</span><span class="d">Five minutes, a few times a year</span></span></a>
+<a class="toc-item" href="#seasonal"><span class="toc-num">05</span><span><span class="t">Seasonal Prep</span><span class="d">Getting ahead of weather swings</span></span></a>
+<a class="toc-item" href="#alerts"><span class="toc-num">06</span><span><span class="t">Warning Lights, Decoded</span><span class="d">What's routine, what's not</span></span></a>
+<a class="toc-item" href="#diy"><span class="toc-num">07</span><span><span class="t">DIY vs. Service Center</span><span class="d">Knowing which is which</span></span></a>
+<a class="toc-item" href="#storage"><span class="toc-num">08</span><span><span class="t">Long-Term Storage</span><span class="d">Leaving the car for weeks or months</span></span></a>
+</div>
+</div>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 01 DAILY CARE BASICS ===================== -->
+<section class="section" id="basics">
+<div class="section-head">
+<div class="left"><span class="section-num">01</span><h2>Daily Care Basics</h2></div>
+<p>Most "maintenance" is really just a handful of habits repeated consistently.</p>
+</div>
+<div class="card-grid">
+<div class="card"><span class="tag save">ZERO COST</span><h4>No oil, no fluids, no belts</h4><p>There's no engine oil, transmission fluid, spark plugs, or timing belt to worry about — the traditional maintenance schedule simply doesn't apply.</p></div>
+<div class="card"><h4>Wipe cameras and sensors monthly</h4><p>A quick pass with a soft cloth on the cameras and sensors keeps Autopilot and safety features working as intended — dirt and grime are the most common cause of a disabled feature.</p></div>
+<div class="card"><h4>Check tire pressure monthly</h4><p>Temperature swings change pressure more than people expect — a monthly check (more often in winter) prevents both handling issues and uneven wear.</p></div>
+<div class="card"><h4>Replace cabin air filter periodically</h4><p>This is one of the few scheduled parts on the car — check your specific model's recommended interval and swap it yourself or at service.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 02 CLEANING IN & OUT ===================== -->
+<section class="section" id="cleaning">
+<div class="section-head">
+<div class="left"><span class="section-num">02</span><h2>Cleaning In &amp; Out</h2></div>
+<p>What keeps the car looking new — and what quietly damages it.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Hand wash over automatic, when possible</h4><p>Touchless or hand washes are gentler on the paint and trim than brush-style automatic washes, which can leave fine scratches over time.</p></div>
+<div class="card"><span class="tag watch">CHECK FIRST</span><h4>Confirm car wash mode before an automatic wash</h4><p>Putting the car in car wash mode closes windows, folds mirrors, and disables sensors that might otherwise react badly to a wash bay — always enable it first.</p></div>
+<div class="card"><h4>Avoid harsh interior cleaners</h4><p>Strong solvents and ammonia-based cleaners can damage the interior's finish and touchscreen coating — use manufacturer-recommended or mild, non-abrasive products instead.</p></div>
+<div class="card"><h4>Vacuum tracks and seat rails</h4><p>Grit that collects in seat tracks and door tracks can cause noise or premature wear — an occasional vacuum in those spots goes a long way.</p></div>
+<div class="card"><h4>Protect the glass roof</h4><p>Standard automotive glass cleaner is fine, but avoid abrasive pads — the roof is glass, not painted metal, and scratches easily with the wrong tools.</p></div>
+<div class="card"><h4>Don't neglect the trunk and frunk seals</h4><p>Wiping down door and trunk seals occasionally prevents dirt buildup that can eventually affect the seal and let in noise or moisture.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 03 TIRES & WHEELS ===================== -->
+<section class="section" id="tires">
+<div class="section-head">
+<div class="left"><span class="section-num">03</span><h2>Tires &amp; Wheels</h2></div>
+<p>EVs are harder on tires than gas cars — this is the maintenance item most owners underestimate.</p>
+</div>
+<div class="subhead"><span class="bar"></span>Why it matters more on an EV</div>
+<div class="card-grid">
+<div class="card"><span class="tag watch">WATCH FOR</span><h4>Instant torque wears tires faster</h4><p>The immediate, full-power delivery of an electric motor puts more stress on tires than a comparable gas car — expect somewhat shorter tire life, especially with spirited driving.</p></div>
+<div class="card"><h4>Extra weight from the battery</h4><p>The battery pack adds meaningful weight, which increases rolling load on tires — proper inflation matters even more than usual.</p></div>
+</div>
+<div class="subhead"><span class="bar"></span>Keeping ahead of it</div>
+<div class="rank-strip">
+<div class="rank-row"><span class="rnum">1</span><span><span class="rtitle">Rotate on a schedule</span><span class="rsub">Front and rear tires wear differently — rotating on a consistent interval evens it out</span></span><span class="rval">DIY-friendly</span></div>
+<div class="rank-row"><span class="rnum">2</span><span><span class="rtitle">Check pressure monthly</span><span class="rsub">Underinflation is the single biggest avoidable cause of premature wear</span></span><span class="rval">Free, 2 minutes</span></div>
+<div class="rank-row"><span class="rnum">3</span><span><span class="rtitle">Get an alignment check yearly</span><span class="rsub">Especially after hitting a pothole hard or noticing uneven wear</span></span><span class="rval">Worth the visit</span></div>
+</div>
+<div class="callout">
+<div>
+<h4>💡 Rule of thumb</h4>
+<p>Smoother acceleration doesn't just save range — it's the single biggest thing you control that extends tire life.</p>
+</div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 04 SOFTWARE & SYSTEMS CHECKS ===================== -->
+<section class="section" id="systems">
+<div class="section-head">
+<div class="left"><span class="section-num">04</span><h2>Software &amp; Systems Checks</h2></div>
+<p>A few minutes in the app or on the touchscreen catches most issues early.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Review the Service section in-app</h4><p>The app surfaces any open recalls, service bulletins, or recommended items tied to your specific car — worth a glance every few months.</p></div>
+<div class="card"><h4>Keep software reasonably current</h4><p>Updates periodically include bug fixes for exactly the kind of quirky glitch owners tend to worry about — don't defer them indefinitely.</p></div>
+<div class="card"><h4>Run a 12V battery check if prompted</h4><p>Like any car, there's a small 12V battery for low-voltage systems — if the car ever flags it, don't ignore the alert, as it can affect the ability to start up.</p></div>
+<div class="card"><h4>Test windows and mirrors periodically</h4><p>Cycling windows, mirrors, and the frunk/trunk occasionally helps you notice early if something feels off, before it becomes a bigger repair.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 05 SEASONAL PREP ===================== -->
+<section class="section" id="seasonal">
+<div class="section-head">
+<div class="left"><span class="section-num">05</span><h2>Seasonal Prep</h2></div>
+<p>A little prep before each season change prevents most weather-related annoyances.</p>
+</div>
+<div class="card-grid">
+<div class="card"><h4>Swap to winter tires below ~45°F regularly</h4><p>All-season tires lose grip in sustained cold — if you see real winter weather, dedicated winter tires make a noticeable difference in braking and handling.</p></div>
+<div class="card"><h4>Check wiper blades before rainy season</h4><p>Wiper blades degrade with UV exposure and age — replace them before the season you'll actually need them, not after they've started streaking.</p></div>
+<div class="card"><h4>Clear vents and drains before fall</h4><p>Leaves and debris can collect around cowl vents — a quick clear-out before autumn prevents water pooling issues.</p></div>
+<div class="card"><h4>Pre-cool or pre-heat before extreme days</h4><p>Preconditioning while still plugged in uses grid power instead of battery charge, which is both more efficient and easier on the battery in extreme heat or cold.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 06 WARNING LIGHTS, DECODED ===================== -->
+<section class="section" id="alerts">
+<div class="section-head">
+<div class="left"><span class="section-num">06</span><h2>Warning Lights, Decoded</h2></div>
+<p>Most touchscreen alerts are informational — a few are worth acting on quickly.</p>
+</div>
+<div class="card-grid">
+<div class="card"><span class="tag watch">ACT SOON</span><h4>Tire pressure warning</h4><p>Don't dismiss and forget — check pressure at your earliest convenience, since a slow leak can turn into a flat.</p></div>
+<div class="card"><span class="tag watch">ACT SOON</span><h4>Reduced regenerative braking</h4><p>Common in cold weather while the battery warms up — usually resolves on its own after some driving, but persistent warnings outside cold weather are worth a service check.</p></div>
+<div class="card"><span class="tag myth">USUALLY FINE</span><h4>Camera or sensor obstruction alerts</h4><p>Often just a dirty lens or bad weather — clean the relevant camera first before assuming it's a hardware fault.</p></div>
+<div class="card"><h4>When in doubt, tap "Learn More"</h4><p>Every alert links to a plain-language explanation and, where relevant, a way to request service directly — always check there before searching the internet for a diagnosis.</p></div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 07 DIY VS SERVICE CENTER ===================== -->
+<section class="section" id="diy">
+<div class="section-head">
+<div class="left"><span class="section-num">07</span><h2>DIY vs. Service Center</h2></div>
+<p>Knowing which bucket a task falls into saves both money and wasted appointments.</p>
+</div>
+<div class="two-col">
+<div>
+<div class="subhead"><span class="bar"></span>Comfortably DIY</div>
+<table class="spec">
+<tr><th>Task</th><th>Notes</th></tr>
+<tr><td>Tire rotation</td><td>Any tire shop can do this — doesn't need to be Tesla-specific</td></tr>
+<tr><td>Wiper blade replacement</td><td>Standard blades, straightforward swap</td></tr>
+<tr><td>Cabin air filter</td><td>Accessible without special tools on most models</td></tr>
+<tr><td>Exterior/interior cleaning</td><td>No special equipment required</td></tr>
+</table>
+</div>
+<div>
+<div class="subhead"><span class="bar"></span>Better left to service</div>
+<table class="spec">
+<tr><th>Task</th><th>Notes</th></tr>
+<tr><td>Any 12V or high-voltage battery work</td><td>Specialized safety procedures apply</td></tr>
+<tr><td>Suspension or brake repairs</td><td>Safety-critical, needs proper equipment</td></tr>
+<tr><td>Persistent software glitches</td><td>May indicate a hardware issue behind the software symptom</td></tr>
+<tr><td>Body or glass damage</td><td>Needs manufacturer-approved parts and technique</td></tr>
+</table>
+</div>
+</div>
+</section>
+
+<div class="divider-strip"></div>
+
+<!-- ===================== 08 LONG-TERM STORAGE ===================== -->
+<section class="section" id="storage">
+<div class="section-head">
+<div class="left"><span class="section-num">08</span><h2>Long-Term Storage</h2></div>
+<p>Leaving the car for a few weeks or longer takes a little different care than daily use.</p>
+</div>
+<div class="card-grid">
+<div class="card"><span class="tag save">BEST PRACTICE</span><h4>Leave it plugged in if possible</h4><p>Staying connected to power — even without actively charging — lets the battery management system maintain a healthy state automatically while you're away.</p></div>
+<div class="card"><h4>Set a moderate charge limit before leaving</h4><p>A mid-range charge level is better for long-term storage than leaving it at 100% or letting it sit very low for weeks at a time.</p></div>
+<div class="card"><h4>Check on it remotely if you can</h4><p>The app lets you glance at charge level and car status remotely — worth a quick check partway through an extended trip.</p></div>
+<div class="card"><h4>Don't fully disconnect the 12V system unnecessarily</h4><p>Unless specifically instructed by service for extended storage, leave standard systems as-is rather than improvising a disconnect.</p></div>
+</div>
+</section>
+
+<footer class="footer">
+<div><strong>MODEL Y — MAINTENANCE &amp; CARE GUIDE</strong></div>
+<div>General guidance for U.S. owners — always follow your specific model's documentation and any active service bulletins.</div>
+<div>Not a substitute for professional inspection when something seems genuinely wrong.</div>
+<div>Not an official Tesla document · Companion to the Model Y 2025+ Feature &amp; Charging Guides 🧡</div>
+</footer>
+
+</body>
+</html>

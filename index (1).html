@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Y Owner Guides — Index</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#171A20;
+--paper:#F6F5F1;
+--card:#FFFFFF;
+--red:#E8232B;
+--teal:#00A69C;
+--steel:#5C5E62;
+--line:#DEDCD4;
+--amber:#E8A93A;
+--ice:#3E8EDE;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+background:var(--paper);
+color:var(--ink);
+font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0;}
+.mono{font-family:'JetBrains Mono',monospace;}
+
+.cover{
+position:relative;
+background:var(--ink);
+color:#fff;
+padding:100px 8vw 80px;
+overflow:hidden;
+border-bottom:6px solid var(--teal);
+}
+.cover::before{
+content:"";
+position:absolute; inset:0;
+background:
+radial-gradient(ellipse 900px 500px at 85% -10%, rgba(0,166,156,.30), transparent 60%),
+radial-gradient(ellipse 700px 500px at -5% 110%, rgba(232,35,43,.20), transparent 60%),
+radial-gradient(ellipse 600px 400px at 50% 120%, rgba(62,142,222,.18), transparent 60%);
+pointer-events:none;
+}
+.cover-eyebrow{
+position:relative; z-index:1;
+display:inline-flex; align-items:center; gap:10px;
+font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em;
+color:#B9BBC0; text-transform:uppercase; margin-bottom:28px;
+}
+.cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+.cover h1{
+position:relative; z-index:1;
+font-size:clamp(38px,7vw,84px);
+font-weight:700; line-height:.98; letter-spacing:-.02em;
+}
+.cover h1 span{color:var(--teal);}
+.cover .sub{
+position:relative; z-index:1;
+max-width:660px; margin-top:24px; font-size:18px; color:#D6D7DA;
+}
+.cover .badges{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+.badge{
+font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em;
+border:1px solid #3c3f47; color:#C8C9CD; padding:7px 13px; border-radius:999px;
+}
+
+.wrap{padding:64px 8vw; max-width:1400px; margin:0 auto;}
+.wrap h2{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel); margin-bottom:26px;}
+
+.guide-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px;}
+.guide-card{
+position:relative;
+display:flex; flex-direction:column; gap:14px;
+background:var(--card); border:1px solid var(--line); border-radius:16px;
+padding:26px 26px 24px; text-decoration:none; color:var(--ink);
+overflow:hidden;
+}
+.guide-card::before{
+content:""; position:absolute; top:0; left:0; right:0; height:5px;
+background:var(--accent, var(--teal));
+}
+.guide-num{
+font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px;
+letter-spacing:.08em; color:var(--accent, var(--teal));
+}
+.guide-card h3{font-size:21px; letter-spacing:-.01em; margin-top:2px;}
+.guide-card p{font-size:13.8px; color:var(--steel); margin:0;}
+.guide-tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:6px;}
+.guide-tags span{
+font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.04em; text-transform:uppercase;
+background:#F0EFEA; color:var(--steel); padding:4px 9px; border-radius:6px;
+}
+.guide-open{
+margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px;
+color:var(--accent, var(--teal)); display:flex; align-items:center; gap:6px;
+}
+.guide-card:hover{border-color:var(--accent, var(--teal));}
+
+.footer{
+background:var(--ink); color:#9A9CA1; text-align:center; padding:44px 20px 60px;
+font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.9;
+}
+.footer strong{color:#fff;}
+
+@media (max-width:640px){
+.guide-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+<div class="cover-eyebrow"><span class="dot"></span> UNOFFICIAL OWNER RESOURCE</div>
+<h1>MODEL Y<br>OWNER <span>GUIDES.</span></h1>
+<p class="sub">A small library of practical, plain-language guides for Model Y owners — features, charging costs, maintenance, and winter driving, all in one place.</p>
+<div class="badges">
+<span class="badge">4 GUIDES</span>
+<span class="badge">PRINT-FRIENDLY</span>
+<span class="badge">UPDATED AUG 2026</span>
+</div>
+</header>
+
+<!-- ===================== GUIDE INDEX ===================== -->
+<div class="wrap">
+<h2>Choose a guide</h2>
+<div class="guide-grid">
+
+<a class="guide-card" style="--accent:var(--red)" href="tmyftguides.html">
+<span class="guide-num">GUIDE 01</span>
+<h3>Feature Guide</h3>
+<p>The full rundown of Model Y features, controls, and settings — the starting point for getting to know the car.</p>
+<div class="guide-tags"><span>Controls</span><span>Features</span><span>Getting started</span></div>
+<span class="guide-open">Open guide →</span>
+</a>
+
+<a class="guide-card" style="--accent:var(--teal)" href="tmychargesavings.html">
+<span class="guide-num">GUIDE 02</span>
+<h3>Charging, Costs &amp; Owner Tips</h3>
+<p>When to plug in, how to keep your electric bill low, current incentives, and the everyday habits that save money.</p>
+<div class="guide-tags"><span>Charging</span><span>Incentives</span><span>Savings</span></div>
+<span class="guide-open">Open guide →</span>
+</a>
+
+<a class="guide-card" style="--accent:var(--amber)" href="tmymaintenance.html">
+<span class="guide-num">GUIDE 03</span>
+<h3>Maintenance &amp; Care</h3>
+<p>The maintenance habits that actually matter, what warning lights mean, and when to DIY versus book a service visit.</p>
+<div class="guide-tags"><span>Maintenance</span><span>Tires</span><span>Warning lights</span></div>
+<span class="guide-open">Open guide →</span>
+</a>
+
+<a class="guide-card" style="--accent:var(--ice)" href="tmywinter.html">
+<span class="guide-num">GUIDE 04</span>
+<h3>Winter Driving Guide</h3>
+<p>What changes about range, charging, and handling in cold weather — and the habits that make winter a non-event.</p>
+<div class="guide-tags"><span>Cold weather</span><span>Range</span><span>Traction</span></div>
+<span class="guide-open">Open guide →</span>
+</a>
+
+</div>
+</div>
+
+<footer class="footer">
+<div><strong>MODEL Y OWNER GUIDES</strong></div>
+<div>General guidance for U.S. owners — details vary by model year, location, and change over time.</div>
+<div>Not an official Tesla document · Not affiliated with or endorsed by Tesla, Inc. 🧡</div>
+</footer>
+
+</body>
+</html>
